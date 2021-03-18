@@ -43,7 +43,7 @@ environment Rails.env
 
 if Rails.env.production? || Rails.env.homologation?
   app_dir = File.expand_path("../..", __FILE__)
-  shared_dir = "/home/rails/digital_cash/shared"
+  shared_dir = "/home/root/nginx_postgres_puma_rails/digital_cash/shared"
 
   # Set up socket location
   bind "unix://#{shared_dir}/sockets/puma.sock"
