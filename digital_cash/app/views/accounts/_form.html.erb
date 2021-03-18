@@ -1,0 +1,92 @@
+<%= form_for(account, :html => {class: "page-body list", multipart: true}) do |f| %>
+  <% if account.errors.any? %>
+    <div class="row">
+      <ul class="collection with-header animated fadeInUp">
+        <% if account.errors.count > 1 %>
+          <li class="collection-header"><h5><%= account.errors.count %> erros impediram que o registro fosse salvo:</h5></li>
+        <% else %>
+          <li class="collection-header"><h5><%= account.errors.count %> erro impediu que o registro fosse salvo:</h5></li>
+        <% end %>
+        <% account.errors.full_messages.each do |message| %>
+          <li class="collection-item valign-wrapper"><i class="material-icons">error_outline</i>&nbsp;<span> <%= message %></span></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="row">
+      <div class="col-12">
+        <h4 class="form-section">Dados da Conta</h4>
+      </div>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label "Banco", class: "" %>
+          <%= f.collection_select(:bank_id, Bank.all, :id, :name, { include_blank: "" }, class: "select2 form-control", style:"width: 100%", required: true) %>
+        </fieldset>
+      </div>
+    
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :agency_number, class: "" %>
+          <%= f.text_field :agency_number, required: true, class: "form-control" %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :account_number, class: "" %>
+          <%= f.text_field :account_number, required: true, class: "form-control" %>
+        </fieldset>
+      </div>
+
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label "Tipo", class: "" %>
+          <%= f.select(:account_type, Account.account_types.keys.map {|account_type| [Account.human_enum_name(:account_type, account_type), account_type]}, { include_blank: false }, class: "form-control browser-default", id: 'account_type') %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-actions right">
+        <div class="row d-flex justify-content-end">
+          <div class="col-12 mb-1 justify-content-end">
+            <button type="submit" class="btn btn-outline-primary js-submit form-submit" onclick="javascript: submitForm()" id="btn_submit">
+              <i class="ft-check"></i> Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+
+<script>
+  disableFields(true);
+
+  $('#account_bank_id').change(function () {
+    if (this.value != ''){
+      disableFields(false);
+    } else {
+      disableFields(true);
+    }
+  });
+
+  function disableFields(boolean) {
+    $('#account_agency_number').prop( "disabled", boolean );
+    $('#account_account_number').prop( "disabled", boolean );
+    $('#account_type').prop( "disabled", boolean );
+  }
+</script>

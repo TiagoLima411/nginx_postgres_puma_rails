@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws.sandbox.pagseguro.uol.com.br/transactions/
+    body:
+      encoding: UTF-8
+      string: email=tiagolima.0411%40gmail.com&token=<you_token>&payment.mode=default&payment.method=boleto&currency=BRL&item[1].id=1&item[1].description=Recargar%20em%20conta&item[1].amount=11.00&item[1].quantity=1&notificationURL=http%3A%2F%2Flocalhost%3A3000%2Fpagseguro%2Fnotify&reference=ORDER123&sender.name=Tiago%20de%20Lima%20Alves&sender.CPF=16261677026&sender.areaCode=82&sender.phone=999999999&sender.email=tiago%40sandbox.pagseguro.com.br&shipping.address.street=Conj.%20Celly%20Loureiro%2C%20Qd%20-%20E&shipping.address.number=71&shipping.address.complement=5o%20andar&shipping.address.district=Benedito%20Bentes&shipping.address.postalCode=57084-000&shipping.address.city=Macei%C3%B3&shipping.address.state=AL&shipping.address.country=BRA&shipping.type=3&shipping.cost=0.00
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.pagseguro.com.br.v3+xml
+      Content-Length:
+      - '1630'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 12 Feb 2021 20:15:16 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 241e2595d3de1bc9f3ae210ccf7f6f82.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - GIG51-C1
+      X-Amz-Cf-Id:
+      - 5xebvhvKldujvIomYS0OQBmuuVs9tn0o9Dmhbe1flUwWQEDrOZkAZQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pjx0cmFuc2FjdGlvbj48ZGF0ZT4yMDIxLTAyLTEyVDE3OjE1OjA3LjAwMC0wMzowMDwvZGF0ZT48Y29kZT44QUI3NTg1My04RTlELTRGNDMtOTg4NS1BMTE1OEFEQzJGM0E8L2NvZGU+PHJlZmVyZW5jZT5PUkRFUjEyMzwvcmVmZXJlbmNlPjx0eXBlPjE8L3R5cGU+PHN0YXR1cz4xPC9zdGF0dXM+PGxhc3RFdmVudERhdGU+MjAyMS0wMi0xMlQxNzoxNTowOS4wMDAtMDM6MDA8L2xhc3RFdmVudERhdGU+PHBheW1lbnRNZXRob2Q+PHR5cGU+MjwvdHlwZT48Y29kZT4yMDI8L2NvZGU+PC9wYXltZW50TWV0aG9kPjxwYXltZW50TGluaz5odHRwczovL3NhbmRib3gucGFnc2VndXJvLnVvbC5jb20uYnIvY2hlY2tvdXQvcGF5bWVudC9ib29rbGV0L3ByaW50LmpodG1sP2M9NmVlN2Y0OTQ2ZDljYmVhMmEyMDRkZjMxMzliNmEzYjgyNmQxM2NiZjM0NTQ5Yzc1NDEzNTg3YTZhYmI1MmI5YmNiMDM5MGVjZTIwNjIzNWE8L3BheW1lbnRMaW5rPjxncm9zc0Ftb3VudD4xMS4wMDwvZ3Jvc3NBbW91bnQ+PGRpc2NvdW50QW1vdW50PjAuMDA8L2Rpc2NvdW50QW1vdW50PjxjcmVkaXRvckZlZXM+PGludGVybWVkaWF0aW9uUmF0ZUFtb3VudD4wLjQwPC9pbnRlcm1lZGlhdGlvblJhdGVBbW91bnQ+PGludGVybWVkaWF0aW9uRmVlQW1vdW50PjAuNTU8L2ludGVybWVkaWF0aW9uRmVlQW1vdW50PjwvY3JlZGl0b3JGZWVzPjxuZXRBbW91bnQ+MTAuMDU8L25ldEFtb3VudD48ZXh0cmFBbW91bnQ+MC4wMDwvZXh0cmFBbW91bnQ+PGluc3RhbGxtZW50Q291bnQ+MTwvaW5zdGFsbG1lbnRDb3VudD48aXRlbUNvdW50PjE8L2l0ZW1Db3VudD48aXRlbXM+PGl0ZW0+PGlkPjE8L2lkPjxkZXNjcmlwdGlvbj5SZWNhcmdhciBlbSBjb250YTwvZGVzY3JpcHRpb24+PHF1YW50aXR5PjE8L3F1YW50aXR5PjxhbW91bnQ+MTEuMDA8L2Ftb3VudD48L2l0ZW0+PC9pdGVtcz48c2VuZGVyPjxuYW1lPlRpYWdvIGRlIExpbWEgQWx2ZXM8L25hbWU+PGVtYWlsPnRpYWdvQHNhbmRib3gucGFnc2VndXJvLmNvbS5icjwvZW1haWw+PHBob25lPjxhcmVhQ29kZT44MjwvYXJlYUNvZGU+PG51bWJlcj45OTk5OTk5OTk8L251bWJlcj48L3Bob25lPjxkb2N1bWVudHM+PGRvY3VtZW50Pjx0eXBlPkNQRjwvdHlwZT48dmFsdWU+MTYyNjE2NzcwMjY8L3ZhbHVlPjwvZG9jdW1lbnQ+PC9kb2N1bWVudHM+PC9zZW5kZXI+PHNoaXBwaW5nPjxhZGRyZXNzPjxzdHJlZXQ+Q29uai4gQ2VsbHkgTG91cmVpcm8sIFFkIC0gRTwvc3RyZWV0PjxudW1iZXI+NzE8L251bWJlcj48Y29tcGxlbWVudD41byBhbmRhcjwvY29tcGxlbWVudD48ZGlzdHJpY3Q+QmVuZWRpdG8gQmVudGVzPC9kaXN0cmljdD48Y2l0eT5NYWNlacOzPC9jaXR5PjxzdGF0ZT5BTDwvc3RhdGU+PGNvdW50cnk+QlJBPC9jb3VudHJ5Pjxwb3N0YWxDb2RlPjU3MDg0MDAwPC9wb3N0YWxDb2RlPjwvYWRkcmVzcz48dHlwZT4zPC90eXBlPjxjb3N0PjAuMDA8L2Nvc3Q+PC9zaGlwcGluZz48cHJpbWFyeVJlY2VpdmVyPjxwdWJsaWNLZXk+UFVCMzRBNjZCNkY2NjdBNEIyMEEyNzlCQkY1QzgxMEMxMjA8L3B1YmxpY0tleT48L3ByaW1hcnlSZWNlaXZlcj48L3RyYW5zYWN0aW9uPg==
+  recorded_at: Fri, 12 Feb 2021 20:15:16 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,141 @@
+<div class="content-wrapper">
+  
+  <div class="content-body">
+    <div class="row">
+
+      <div class="col-xl-7 col-lg-12">
+        <div class="card">
+          
+          <div class="card-header">
+            <h4 class="card-title">VOLUMES MENSAIS</h4>
+            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+          </div>
+          <div class="card-content px-1" style="height: 270px;">
+            <div id="bar-example" style="height: 270px;"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-xl-5 col-lg-12">
+        <div class="card">
+          
+          <div class="card-header">
+            <div class="row">
+              <h4 class="card-title col-6">Entradas/Saídas: <b><%= display_cent_in_money(@amoun_volume) %></b></h4>
+              <div class="card-title col-6 d-flex justify-content-end">
+                <p class="text-bold-700 font-medium-1 text-uppercase">Saldo: <b><%= display_cent_in_money(@account_balance) %></b></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-content px-1" style="height: 250px;">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                  <div class="card-body">
+                    <div class="card">
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-0 text-bold-700 font-medium-1 text-uppercase">Entradas</p>
+                      </div>
+                      <div class="row">
+                        <div class="col-10 align-self-center">
+                          <div class="progress mb-0" style="height: 16px;">
+                              <div class="progress-bar bg-primary" role="progressbar" style="width: <%= @percent_incomes %>%"
+                                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                        <div class="col-xl-2 col-sm-2">
+                          <p class="text-bold-700 font-medium-1 text-uppercase mb-0"> <%= display_percent(@percent_incomes)%></p>
+                        </div>
+                      </div>
+                      <b class="font-medium-1 text-uppercase" ><%= display_cent_in_money(@amount_income_value_cents) %></b>
+                    </div>
+
+                    <div class="card">
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-0 text-bold-700 font-medium-1 text-uppercase">Saídas</p>
+                      </div>
+                      <div class="row">
+                        <div class="col-10 align-self-center">
+                          <div class="progress mb-0" style="height: 16px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: <%= @percent_outgoings %>%"
+                              aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <p class="text-bold-700 font-medium-1 text-uppercase mb-0"><%= display_percent(@percent_outgoings) %></p>
+                        </div>
+                      </div>
+                      <b class="font-medium-1 text-uppercase"><%= display_cent_in_money(@amount_outgoing_value_cents) %></b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        </div>
+      </div>
+
+    </div> 
+
+    <div class="card">
+      <div class="card-content collapse show">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 d-flex justify-content-start align-items-center" style="background-image: url(<%=image_url 'bg_web.jpg'%>) !important; background-size: cover !important; min-height:70vh;">
+              <section class="section-dashboard-user">
+                <div class="row align-items-star p-4" style="height:100%">
+                  <div class="col-12 pl-sm-0 pr-sm-0">
+                    <h2 class="text-uppercase text-bold-700 white mb-2 font-large-2 ">Otimize seu tempo</h2>
+                    <p class="white mb-0 font-medium-3">Tá na hora de tirar aquele seu</p>
+                    <p class="white mb-0 font-medium-3">velho sonho da gaveta!</p>
+                    <p class="white mb-0 font-medium-3">gerencie suas finanças e</p>
+                    <p class="white mb-0 font-medium-3">coquiste a sua liberdade e</p>
+                    <p class="white mb-0 font-medium-3">indenpendência financeira.</p>
+                    <% if current_user.account.nil? %>
+                      <a class="btn btn-primary height-50 white font-medium-3 mt-2 btn-md d-flex align-items-center justify-content-center" href="/accounts/new">Criar
+                        Conta</a>
+                    <% end %>
+                    <!-- <a href="#"></a> -->
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $( document ).ready(function() {
+    get_volume_traded_by_month();
+  });
+
+  function get_volume_traded_by_month() {
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url: '/get_volume_traded_by_month',
+      cache: false,
+      success: function (res) {
+        build_graph(res)
+      }, 
+      error: function (xhr, textStatus, error) {
+          console.log(error);
+      }
+    });
+  }
+
+  function build_graph(data){
+    Morris.Bar({
+      element: 'bar-example',
+      data: data,
+      xkey: 'month',
+      ykeys: ['income', 'outgoing'],
+      labels: ['Entrada', 'Saída']
+    });
+  }
+</script>

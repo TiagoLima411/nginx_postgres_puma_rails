@@ -1,0 +1,371 @@
+//*= require toastr
+//*= require base/bootstrap
+//*= require base/bootstrap-extended
+//*= require base/vertical-menu
+//*= require base/bootstrap-datetimepicker
+//*= require base/select2
+//*= require base/morris
+//*= require base/jquery-jvectormap
+//*= require base/palette-gradient
+//*= require base/nouislider
+//*= require base/noui-slider
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: font-url("Montserrat-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Myriad-bold";
+  src: font-url("Bahij-Myriad-Arabic-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Myriad-regular";
+  src: font-url("Bahij-Myriad-Arabic-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "helvetica-light";
+  src: font-url("helvetica-neue-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "helvetica-neue-bold";
+  src: font-url("helvetica-neue-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FranckeMedium";
+  src: font-url("Francke_W01_Medium.ttf") format("truetype");
+}
+
+
+.section1-register {
+  background: image-url("bg-new-user2.jpg") no-repeat right top;
+  /* Set a specific height */
+  padding: 60px 0;
+  width: 100%;
+  height: 400px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-dashboard-user{
+  background: image-url("bg_web.jpg") no-repeat right top;
+  background-size: cover;
+  width: 100%;
+  height: 700px;
+}
+
+.row-section1-register {
+  height: 100%;
+}
+
+.logo-register {
+  width: 100%;
+  height: 100%;
+}
+
+.container-register {
+  margin: 0 168px;
+}
+
+.title-register-1,
+.title-register-2,
+.title-register-3 {
+  font-family: "Myriad-bold";
+  color: #fff;
+  opacity: 0.99;
+}
+
+.title-register-1,
+.title-register-2 {
+  font-size: 120px;
+  line-height: 0.56;
+  letter-spacing: -4.8px;
+}
+
+.title-register-3 {
+  font-family: "Myriad-bold";
+  font-size: 84px;
+  line-height: 0.55;
+  letter-spacing: -3.4px;
+}
+
+.subtitle-register-1 {
+  font-family: "helvetica-light";
+  color: #fff;
+  opacity: 0.99;
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: -0.9px;
+}
+
+.title-indicator {
+  font-family: "helvetica-neue-bold";
+  font-size: 34px;
+  line-height: 0.91;
+  letter-spacing: -1px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.subtitle-indicator {
+  font-family: "helvetica-light";
+  font-size: 14px;
+  line-height: 1.29;
+  text-align: center;
+  color: #ffffff;
+}
+
+.bar-username-register {
+  width: 100%;
+  height: 188px;
+  background-image: linear-gradient(to bottom, #062645, #225e76);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+.content-register {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #f8f8f8;
+}
+
+.container-body-register {
+  padding: 54px 168px;
+}
+
+.title-body-register {
+  font-family: "helvetica-neue-bold";
+  font-size: 18px;
+  line-height: 1;
+  text-align: left;
+  color: #838296;
+  margin-bottom: 20px;
+}
+
+.title-side-container-register {
+  font-family: "helvetica-neue-bold";
+  font-size: 18px;
+  line-height: 1;
+  color: #838296;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.btn-register {
+  border-radius: 4px;
+  background-color: #29afa3 !important;
+  font-family: "helvetica-neue-bold";
+  line-height: 1.26;
+  letter-spacing: normal;
+  font-size: 19px;
+  color: #ffffff;
+  width: 275px !important;
+
+}
+
+.footer-register {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: none !important;
+  background-color: #f8f8f8;
+}
+
+.flex-col-register {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  img.onpax-logo {
+    width: 154px;
+  }
+
+  p.subtitle-footer{
+    font-family: "helvetica-neue-bold";
+    font-size: 12px;
+    padding-left: 20px;
+    color: #737196;
+    margin-bottom:0;
+  }
+}
+
+.copy-footer {
+  font-family: "helvetica-light";
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  color: #737196;
+}
+
+.redes-sociais-ul {
+  list-style-type: none;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.redes-sociais-li,
+.redes-sociais-ul {
+  display: inline;
+}
+
+.social-icon {
+  width: 23px;
+  height: 23px;
+  margin: 0px 20px;
+}
+
+.label-register {
+  font-family: "helvetica-light" !important;
+  font-size: 12px !important;
+  line-height: 2.08 !important;
+  color: #838296 !important;
+}
+
+.padding-container-left {
+  padding-left: 30px !important;
+}
+
+.padding-container-right {
+  padding-right: 30px !important;
+}
+
+// Breaking Points
+@media (min-width: 960px) {
+  .separator-register {
+    border-right: 1px solid #ccd0d6;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .section1-register {
+    background: image-url("bg-new-user-mobile.jpg") no-repeat;
+    background-size: cover;
+    background-position: 85%;
+    height: 800px;
+
+    .container-register {
+      margin: 0 100px;
+
+      img.menu_icon {
+        width: 28vw;
+      }
+
+      .title-register-1,
+      .title-register-2 {
+        font-size: 11vw;
+      }
+
+      .title-register-3 {
+        font-size: 8vw;
+      }
+
+      .subtitle-register-1 {
+        font-size: 4vw;
+      }
+    }
+  }
+
+  .title-indicator {
+    font-size: 4vw;
+  }
+
+  .subtitle-indicator {
+    font-size: 2vw;
+  }
+
+  .container-body-register {
+    padding: 20px 90px;
+  }
+
+  .title-body-register,
+  .title-side-container-register {
+    font-size: 3.5vw !important;
+  }
+
+  .label-register {
+    font-size: 2.5vw !important;
+  }
+
+  .row-btn-register {
+    margin: 20px 0 0 0 !important;
+  }
+}
+
+@media (max-width: 599px) {
+
+  .section1-register {
+    background: image-url("bg-new-user-mobile.jpg") no-repeat;
+    background-size: cover;
+    background-position: 80%;
+    height: 68vh;
+    padding: 40px;
+
+    .container-register {
+      margin: 10px 10px;
+
+      img.menu_icon {
+        width: 34vw;
+      }
+
+      .title-register-1,
+      .title-register-2 {
+        font-size: 15vw;
+        letter-spacing: -3px
+      }
+
+      .title-register-3 {
+        font-size: 10vw;
+        letter-spacing: -2px
+      }
+
+      .subtitle-register-1 {
+        font-size: 5vw;
+      }
+    }
+  }
+
+  .title-indicator {
+    font-size: 5.4vw;
+  }
+
+  .subtitle-indicator {
+    font-size: 3.2vw;
+  }
+
+  // .row-username-register {
+  //   justify-content: center;
+  //   margin-top: 30px;
+  // }
+
+  .container-body-register {
+    padding: 10px 10px;
+  }
+
+  .row-btn-register {
+    margin: 20px 0 0 0 !important;
+  }
+
+  .padding-container-left {
+    padding-left: 15px !important;
+  }
+
+  .padding-container-right {
+    padding-right: 15px !important;
+  }
+
+  .title-body-register,
+  .title-side-container-register {
+    font-size: 4.5vw !important;
+  }
+
+  .label-register {
+    font-size: 3.3vw !important;
+  }
+}

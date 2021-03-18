@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="24px" viewBox="0 0 31 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>redo-arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="login" transform="translate(-815.000000, -588.000000)" fill-rule="nonzero" fill="#FFFFFF">
+            <g id="submit" transform="translate(798.000000, 568.000000)">
+                <g id="redo-arrow" transform="translate(17.000000, 20.000000)">
+                    <path d="M30.2500299,8.93946269 L18.5344478,17.8446269 L18.5344478,13.1685672 C10.4830746,12.3957313 2.75238806,15.4761493 8.95522388e-05,23.9471642 C-0.0301791045,13.0502687 8.9458209,6.87591045 18.5344478,4.78997015 L18.5344478,0.0342089552 L30.2500299,8.93946269 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

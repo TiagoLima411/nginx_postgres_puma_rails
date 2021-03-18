@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}.cls-2{fill:#00428b}.cls-3{fill:#f79800}
+        </style>
+    </defs>
+    <g id="Group_18909" data-name="Group 18909" transform="translate(-112 -844)">
+        <g id="Ico" transform="translate(112 844)">
+            <g id="bg">
+                <rect id="Rectangle_945" width="40" height="40" class="cls-1" data-name="Rectangle 945" rx="4"/>
+            </g>
+        </g>
+        <g id="Group_18777" data-name="Group 18777" transform="translate(115.034 859)">
+            <path id="Path_12774" d="M58.246 47.687l1.652-9.7h2.643l-1.653 9.7z" class="cls-2" data-name="Path 12774" transform="translate(-46.746 -37.822)"/>
+            <path id="Path_12775" d="M76.7 37.985a6.825 6.825 0 0 0-2.369-.407c-2.612 0-4.451 1.315-4.466 3.2-.015 1.393 1.313 2.171 2.316 2.634 1.029.475 1.375.778 1.37 1.2-.007.65-.822.947-1.581.947a5.542 5.542 0 0 1-2.487-.509l-.341-.154-.371 2.171a8.364 8.364 0 0 0 2.944.517c2.778 0 4.582-1.3 4.6-3.312.01-1.1-.694-1.943-2.219-2.634-.924-.448-1.489-.748-1.484-1.2 0-.4.479-.834 1.513-.834a4.882 4.882 0 0 1 1.978.372l.237.112.358-2.1" class="cls-2" data-name="Path 12775" transform="translate(-52.971 -37.578)"/>
+            <path id="Path_12776" d="M94.131 38.013h-2.042a1.315 1.315 0 0 0-1.384.8L86.78 47.7h2.775s.454-1.195.556-1.457h3.385c.079.339.321 1.453.321 1.453h2.453l-2.139-9.69m-3.259 6.249l1.053-2.71c-.016.026.217-.562.35-.925l.178.836.612 2.8z" class="cls-2" data-name="Path 12776" transform="translate(-63.628 -37.835)"/>
+            <path id="Path_12777" d="M43.368 38.008l-2.587 6.612-.276-1.344a7.568 7.568 0 0 0-3.66-4.067l2.366 8.48h2.8l4.161-9.677h-2.8" class="cls-2" data-name="Path 12777" transform="translate(-34.085 -37.832)"/>
+            <path id="Path_12778" d="M34.382 37.993h-4.261l-.034.2a8.748 8.748 0 0 1 6.42 5.072l-.927-4.455a1.106 1.106 0 0 0-1.2-.819" class="cls-3" data-name="Path 12778" transform="translate(-30.087 -37.824)"/>
+        </g>
+    </g>
+</svg>

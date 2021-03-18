@@ -1,0 +1,7 @@
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) && msg != "Você já está autenticado." %>
+    <script>
+      Materialize.toast("<%= msg %>", 4000)
+    </script>
+  <% end %>
+<% end %>

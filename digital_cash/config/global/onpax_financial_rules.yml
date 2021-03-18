@@ -1,0 +1,11 @@
+test:
+  binary_point_value_cents: 33
+
+development:
+  binary_point_value_cents: 33
+
+homologation:
+  binary_point_value_cents: 33
+
+production:
+  binary_point_value_cents: 33

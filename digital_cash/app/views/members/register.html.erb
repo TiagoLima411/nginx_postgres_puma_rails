@@ -1,0 +1,264 @@
+<%= form_for(@member, url: '/members', authenticity_token: false) do |f| %>
+  <div class="app-content content">
+
+    <section class="section1-register">
+      <div class="container-register">
+        <div class="row-section1-register d-flex flex-column justify-content-between justify-content-xl-between justify-content-lg-between justify-content-md-between justify-content-sm-between">
+          <div class="row">
+            <div class="row d-flex justify-content-start align-items-center">
+              <div class="col-12 justify-content-end">
+                <p class="title-register-1">Seja nosso cliente</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <%= f.fields_for :user do |ff| %>
+      <% if @member.errors.any? %>
+        <div class="row">
+          <ul class="collection with-header animated fadeInUp">
+            <% if @member.errors.count > 1 %>
+                <li class="collection-header">
+                  <h5><%= @member.errors.count %> erros impediram que o registro fosse salvo:</h5>
+                </li>
+            <% else %>
+                <li class="collection-header">
+                  <h5><%= @member.errors.count %> erros impediram que o registro fosse salvo:</h5>
+                </li>
+            <% end %>
+            <% @member.errors.full_messages.each do |message| %>
+                <li class="collection-item valign-wrapper">
+                  <i class="material-icons">error_outline</i>&nbsp;<span><%= message %></span>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="content-body content-register">
+        <div class="content-wrapper">
+          <div class="container-body-register">
+            <h1 class="title-body-register">Crie seu Acesso</h1>
+            <div class="row">
+              <div class="col-xl-4 col-lg-6 col-md-12 mb-0">
+                <fieldset class="form-group">
+                  <label for="basicInput" class="label-register">Escolha um nome de Usuário</label>
+                  <%= ff.text_field :username, id:"inputUser", class:"form-control", placeholder: "Usuário", required:"required", maxlength: 25 %>
+                </fieldset>
+              </div>
+
+              <div class="col-xl-4 col-lg-6 col-md-7 mb-0">
+                <fieldset class="form-group">
+                  <label for="basicInput" class="label-register">Senha (Mínimo de 6 caracteres)</label>
+                  <%= ff.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "Senha", required:"required", minlength: 6 %>
+                </fieldset>
+              </div>
+
+              <div class="col-xl-4 col-lg-6 col-md-5 mb-0">
+                <fieldset class="form-group">
+                  <label for="basicInput" class="label-register">Confirme a Senha</label>
+                  <%= ff.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "Repetir Senha", required:"required", minlength: 6 %>
+                </fieldset>
+              </div>
+            </div>
+
+            <!-- Inicio do container dividido -->
+            <div class="row">
+              <!-- Lado esquerdo -->
+              <div class="col-xl-6 col-lg-6 col-md-12 mb-1 separator-register padding-container-right">
+                <h1 class="title-side-container-register">Dados Pessoais</h1>
+
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Nome completo</label>
+                      <%= f.text_field :name, class:"form-control", placeholder: "Nome", required:"required" %>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xl-7 col-lg-6 col-md-6 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">E-mail</label>
+                      <%= f.email_field :email, class:"form-control", placeholder: "Seu E-mail", required:"required" %>
+                    </fieldset>
+                  </div>
+                  <div class="col-xl-5 col-lg-6 col-md-6 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Celular</label>
+                      <%= f.text_field :phone, class:"form-control celular", placeholder: "Seu Telefone", required:"required", maxlength:"11" %>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xl-5 col-lg-5 col-md-4 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Nascimento</label>
+                      <%= f.text_field :birthday, class:"form-control datetimepicker", required:"required", placeholder:"Data de Nascimento" %>
+                    </fieldset>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-4 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Sexo</label>
+                      <%= f.select(:gender, Member.genders.keys.map {|gender| [Member.human_enum_name(:gender, gender), gender]}, { include_blank: false }, class: "form-control") %>
+                    </fieldset>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">CPF</label>
+                      <%= f.text_field :cpf, class:"form-control cpf", placeholder: "Seu CPF", required:"required" %>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-7 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Nome da Mãe</label>
+                      <%= f.text_field :mother_name, id: "mother_name", class:"form-control", placeholder: "Nome da Mãe", required: "required", maxlength: "255" %>
+                    </fieldset>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-5 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">RG</label>
+                        <%= f.text_field :rg, id: "rg", class:"form-control", placeholder: "RG", required: "required" %>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-6 col-lg-6 col-md-12 mb-0 padding-container-left">
+                <h1 class="title-side-container-register">Seu Endereço</h1>
+
+                <div class="row">
+                  <div class="col-xl-3 col-lg-6 col-md-4 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">CEP</label>
+                      <%= f.text_field :zipcode, class:"form-control cep", placeholder: "Seu CEP", id: "cep", required:"required" %>
+                    </fieldset>
+                  </div>
+                  <div class="col-xl-9 col-lg-6 col-md-8 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Endereço</label>
+                      <%= f.text_field :address, class:"form-control", placeholder: "Seu Endereco", id:"logradouro", required:"required", maxlength: "255" %>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xl-2 col-lg-6 col-md-4 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Número</label>
+                      <%= f.text_field :address_number, class:"form-control", placeholder: "Número", required:"required" %>
+                    </fieldset>
+                  </div>
+                  <div class="col-xl-10 col-lg-6 col-md-8 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Bairro</label>
+                      <%= f.text_field :district, class:"form-control", placeholder: "Seu Bairro", id:"bairro", required:"required", maxlength: "255" %>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Complemento</label>
+                      <%= f.text_field :complement, class:"form-control", placeholder: "Complemento", id:"complemento", maxlength: "255" %>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-6 mb-0">
+                    <fieldset class="form-group">
+                      <label for="" class="label-register">Estado *</label>
+                      <%= collection_select(:member, :state_id, State.all, :id, :name, {include_blank: "Selecione seu estado"}, {id: 'cbbState', :class=>'js-example-basic-single form-control', :style => "width: 100%;"}) %>
+                    </fieldset>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 mb-0">
+                    <fieldset class="form-group">
+                      <label for="basicInput" class="label-register">Cidade</label>
+                      <% cities = []
+                        cities = f.object.state.cities unless f.object.state.nil? %>
+                      <%= collection_select(:member, :city_id, cities, :id, :name, {include_blank: "Selecione sua cidade"}, {id: 'cbbCity', :class=>'js-example-basic-single form-control', :style => "width: 100%;"}) %>
+                    </fieldset>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Fim lado direito -->
+            </div>
+            <div class="row justify-content-center row-btn-register">
+              <div class="col-s12">
+                <%= f.submit 'Criar Conta', :class=> "btn btn-lg btn-block btn-register height-50", style: "margin:0px;" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <footer class="footer footer-static navbar-border footer-register">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 mb-1 flex-col-register d-flex align-items-center">
+        <div class="onpax-footer">
+          <h3>Digital Cash</h3>
+        </div>
+        <div class="onpax-footer">
+          <p class="subtitle-footer">Plataforma de Negócios</p>
+        </div>
+      </div>
+
+      <div class="col-xl-6 col-lg-6 col-md-12 mb-0 flex-col-register">
+        <ul class="redes-sociais-ul">
+          <li class="redes-sociais-li">
+            <a href="https://www.nobe.com/nobeficial/" target="_blank">
+              <svg class="social-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.365 19.365">
+                <defs><style>.a {fill: #737196;opacity: 0.504;}</style></defs>
+                <path class="a"
+                      d="M477.9,129.454a1.068,1.068,0,0,0-1.068,1.068v17.228a1.068,1.068,0,0,0,1.068,1.068h9.275v-7.5h-2.524V138.4h2.524v-2.156a3.521,3.521,0,0,1,3.759-3.863,20.683,20.683,0,0,1,2.254.115v2.614h-1.547c-1.213,0-1.449.577-1.449,1.423V138.4h2.9l-.378,2.923h-2.517v7.5h4.936a1.068,1.068,0,0,0,1.068-1.068V130.522a1.068,1.068,0,0,0-1.068-1.068H477.9Z"
+                      transform="translate(-476.828 -129.454)" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="redes-sociais-li">
+            <a href="https://twitter.com/nobe_ficial" target="_blank">
+              <svg class="social-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.365 15.737">
+                <defs><style>.a {fill: #737196;opacity: 0.504;}</style></defs>
+                <path class="a"
+                      d="M645.195,140.833a7.945,7.945,0,0,1-2.282.626,3.986,3.986,0,0,0,1.746-2.2,7.943,7.943,0,0,1-2.523.964,3.976,3.976,0,0,0-6.769,3.624,11.279,11.279,0,0,1-8.189-4.151,3.977,3.977,0,0,0,1.23,5.3,3.952,3.952,0,0,1-1.8-.5c0,.017,0,.033,0,.05a3.976,3.976,0,0,0,3.187,3.9,4,4,0,0,1-1.794.068,3.978,3.978,0,0,0,3.712,2.759,7.975,7.975,0,0,1-4.935,1.7,8.13,8.13,0,0,1-.948-.055,11.3,11.3,0,0,0,17.393-9.519q0-.258-.011-.514a8.092,8.092,0,0,0,1.982-2.057"
+                      transform="translate(-625.829 -138.971)" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="redes-sociais-li">
+            <a href="https://www.instagram.com/nobeoficial" target="_blank">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.707 19.659">
+                <defs><style>.a {fill: #737196;opacity: 0.504;}</style></defs>
+                <path class="a"
+                      d="M717.792,129.068a5.711,5.711,0,0,0-5.7,5.705v8.25a5.71,5.71,0,0,0,5.7,5.7h8.3a5.71,5.71,0,0,0,5.7-5.7v-8.25a5.711,5.711,0,0,0-5.7-5.705Zm0,1.69h8.3a3.988,3.988,0,0,1,4.015,4.015v8.25a3.987,3.987,0,0,1-4.015,4.014h-8.3a3.986,3.986,0,0,1-4.014-4.014v-8.25A3.987,3.987,0,0,1,717.792,130.758Zm9.438,1.69a1.182,1.182,0,1,0,1.182,1.182A1.182,1.182,0,0,0,727.231,132.449Zm-5.289,1.388A5.062,5.062,0,1,0,727,138.9,5.074,5.074,0,0,0,721.942,133.836Zm0,1.69a3.372,3.372,0,1,1-3.372,3.372A3.36,3.36,0,0,1,721.942,135.526Z"
+                      transform="translate(-712.088 -129.068)" />
+              </svg>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p class="copy-footer">© 2020 Digital Cash · Política de Privacidade</p>
+      </div>
+    </div>
+  </footer>
+
+<% end %>

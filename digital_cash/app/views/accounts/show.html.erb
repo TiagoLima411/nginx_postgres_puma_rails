@@ -1,0 +1,67 @@
+<div class="content-wrapper">
+
+  <div class="content-header row d-flex align-items-center">
+    <div class="content-header-left col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-1">
+      <h3 class="content-header-title mb-0">Detalhes da Conta</h3>
+    </div>
+    <div class="content-header-right d-flex justify-content-end col-md-6 col-12 mb-1">
+      <div class="btn-group float-md-right ml-1">
+        <%= link_to edit_account_path(@account), class:"btn btn-outline-primary d-flex align-items-center" do %>
+          <i class="ft-edit-2"></i>&nbsp;&nbsp;Editar
+        <% end %>
+      </div>
+
+      <div class="btn-group float-md-right ml-1">
+        <%= link_to dashboard_path, class:"btn btn-outline-primary d-flex align-items-center" do %>
+          <i class="ft-arrow-left"></i>&nbsp;&nbsp;Voltar
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Dados da Conta</h4>
+          <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        </div>
+        <div class="card-content collapse show">
+          <div class="card-body">
+
+            <form class="form">
+              <div class="form-body">
+                <h4 class="form-section">Informações da Conta</h4>
+                <div class="row">
+
+                  <div class="col-md-12">
+                    <label class="text-bold-600">Banco:</label>
+                    <span><%= @account.bank.name %></span>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label class="text-bold-600">Agência:</label>
+                    <span><%=  @account.agency_number %></span>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label class="text-bold-600">Número da Conta:</label>
+                    <span><%= @account.account_number %></span>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label class="text-bold-600">Tipo:</label>
+                    <span><%=  Account.human_enum_name(:account_type, @account.account_type)  %></span>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col s8 m8">
+    <h4>Editar <%= singular_table_name.titleize %></h4>
+  </div>
+</div>
+<section class="card-panel">
+  <div class="card-content">
+    <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
+  </div>
+</section>

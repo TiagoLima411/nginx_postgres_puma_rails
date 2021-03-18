@@ -1,0 +1,173 @@
+<%=  form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => "login-form--form"}) do |f| %>
+  <body class="vertical-layout vertical-menu 1-column  menu-expanded blank-page blank-page" data-open="click" data-menu="vertical-menu" data-col="1-column">
+    <div class="pace  pace-inactive">
+      <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+        <div class="pace-progress-inner"></div>
+      </div>
+      <div class="pace-activity"></div>
+    </div>
+    <div class="app-content content">
+      <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+          <section class="flexbox-container margin-top-login">
+            <div class="col-11 d-flex align-items-end justify-content-end">
+              <div class="col-sm-11 col-md-9 col-lg-5 col-xl-4 col-10 box-shadow-2 p-0 margin-right-login">
+
+                <div class="container-login">
+                  <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+                    <div class="card-header border-0 padding-braking">
+                      <div class="card-title text-center">
+                        <h1 class="title-bold">Digital Cash Payments</h1>
+                      </div>
+                    </div>
+                    
+                    <div class="card-body">
+                      <p class="title-light"> Bem-vindo ao </p>
+                      <p class="title-bold"> Portal do Cliente </p>
+                    </div>
+
+                    <!-- Inicio alert -->
+                    <div class="container-error">
+                      <% flash.each do |key, value| %>
+                        <% unless key.to_s == "timedout" %>
+                          <div class="alert alert-danger" role="alert">
+                            <%= value %>
+                          </div>
+                        <% end %>
+                      <% end %>
+
+                      <% unless session[:recovery_password_errors].nil? %>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="alert bg-danger alert-danger alert-icon-left alert-dismissible mb-0" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <% session[:recovery_password_errors].each do |message| %>
+                                <p><%= message %></p>
+                              <% end %>
+                              <% session[:recovery_password_errors] = nil %>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+
+                      <% unless session[:recovery_password_success].nil? %>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="alert bg-success alert-success alert-icon-left alert-dismissible mb-0" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <p><%= session[:recovery_password_success] %></p>
+                              <% session[:recovery_password_success] = nil %>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+
+                      <% unless session[:recovery_password_warning].nil? %>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="alert bg-warning alert-warning alert-icon-left alert-dismissible mb-0" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <p><%= session[:recovery_password_warning] %></p>
+                              <% session[:recovery_password_warning] = nil %>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+
+                      <% unless session[:member_success].nil? %>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="alert bg-success alert-success alert-icon-left alert-dismissible mb-0" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <p><%= session[:member_success] %></p>
+                              <% session[:member_success] = nil %>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+
+                    </div>
+                    <!-- fim alert -->
+
+                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-5 pt-2 text-span">
+                      <span>Acesse sua conta</span>
+                    </h6>
+                    <% if false %>
+                      <% unless session[:member_success].nil? %>
+                      <p class="login-form--success">
+                        <%= session[:member_success] %>
+                      </p>
+                      <% end %>
+                    <% end %>
+
+                    <div class="card-body">
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <%= f.text_field :username, autofocus: true, placeholder: "Usuário", class: "form-control", id: "user-name" %>
+                        <div class="form-control-position">
+                          <i class="ft-user"></i>
+                        </div>
+                      </fieldset>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", class: "form-control", id:"user-password" %>
+                        <div class="form-control-position">
+                          <i class="fa fa-key"></i>
+                        </div>
+                      </fieldset>
+                      <div class="form-group row">
+                        <div class="col-md-6 col-12 text-center text-sm-left">
+                          <fieldset>
+                            <input type="checkbox" id="rememberme" class="chk-remember" onClick="RemeberValue()">
+                            <label for="remember-me"> Lembrar </label>
+                          </fieldset>
+                        </div>
+                      </div>
+                      <%= f.submit 'Login', class: 'btn btn-block btn-onpax-primary' %>
+                    </div>
+                    <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1 text-span">
+                      <span>Novo na Digital Cash?</span>
+                    </p>
+                    <div class="card-body">
+                      <a href="/account/register" class="btn btn-onpax-secundary btn-block"><i class="ft-user"></i>&nbsp;&nbsp;Cadastre-se agora! </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+<% end %>
+
+<script>
+  function RemeberValue(){
+    var checkvalue = $("#rememberme")
+    let user = document.getElementById("user-name");
+    let pass = document.getElementById("user-password");
+    if (checkvalue.prop("checked") == true){
+      localStorage.setItem("checkbox", "true");
+      localStorage.setItem(user, pass);
+    } else {
+      localStorage.setItem("checkbox", "false");
+    }
+  }
+  $(document).ready(function(){
+    var check = localStorage.getItem("checkbox");
+    if (check == "true"){
+      $("#check").prop("checked") == true;
+    } else {
+      $("#check").prop("checked") == false;
+    }
+  })
+</script>

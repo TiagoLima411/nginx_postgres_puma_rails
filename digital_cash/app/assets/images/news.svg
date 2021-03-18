@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="26" viewBox="0 0 32 26">
+  <g id="folded-newspaper" transform="translate(0 -3)">
+    <g id="Grupo_17356" data-name="Grupo 17356">
+      <path id="Caminho_18440" data-name="Caminho 18440" d="M28,7V3H0V25s0,4,4,4H29s3-.062,3-4V7ZM4,27a1.959,1.959,0,0,1-2-2V5H26V25a2.892,2.892,0,0,0,.676,2Z" fill="#fff"/>
+      <rect id="Retângulo_18174" data-name="Retângulo 18174" width="20" height="2" transform="translate(4 9)" fill="#fff"/>
+      <rect id="Retângulo_18175" data-name="Retângulo 18175" width="7" height="2" transform="translate(15 21)" fill="#fff"/>
+      <rect id="Retângulo_18176" data-name="Retângulo 18176" width="9" height="2" transform="translate(15 17)" fill="#fff"/>
+      <rect id="Retângulo_18177" data-name="Retângulo 18177" width="9" height="2" transform="translate(15 13)" fill="#fff"/>
+      <rect id="Retângulo_18178" data-name="Retângulo 18178" width="9" height="10" transform="translate(4 13)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

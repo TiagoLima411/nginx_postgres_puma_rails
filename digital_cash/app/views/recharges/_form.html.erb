@@ -1,0 +1,69 @@
+<%= form_with url: "/send_card_transaction", method: :post do |f| %>
+
+  <fieldset>
+    <div class="row">
+      <div class="col-12">
+        <h4 class="form-section">Dados da Cartão</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :amount, "Valor:" %>
+          <%= f.text_field :amount, required: true, class: "form-control currency" %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :card_number, "Número do cartão:" %>
+          <%= f.text_field :card_number, required: true, class: "form-control numeric" %>
+        </fieldset>
+      </div>
+
+      <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :card_cvv, "CVV" %>
+          <%= f.text_field :card_cvv, required: true, class: "form-control cvv_format" %>
+        </fieldset>
+      </div>
+
+      <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :card_expiration_month, "Mês" %>
+          <%= f.text_field :card_expiration_month, required: true, class: "form-control month_format" %>
+        </fieldset>
+      </div>
+
+      <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :card_expiration_year, "Ano" %>
+          <%= f.text_field :card_expiration_year, required: true, class: "form-control year_format" %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-actions right">
+        <div class="row d-flex justify-content-end">
+          <div class="col-12 mb-1 justify-content-end">
+            <button type="submit" class="btn btn-outline-primary js-submit form-submit" onclick="javascript: submitForm()" >
+              <i class="ft-check"></i> Recarregar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+
+<script>
+</script>

@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col s8 m8">
+    <h4 class="hydra-title--page">
+      Accounts Cadastrados
+    </h4>
+  </div>
+  <div class="col s4 m4">
+    <%= form_tag accounts_path, :method => "get" do %>
+      <input id="search_term" name="search_term" type="search" 
+      placeholder="Pesquisar" class="hydra-input--search" value="<%= !@search.nil? ? @search : '' %>" required>
+    <% end %>
+  </div>
+</div>
+
+<div class="fixed-action-btn vertical">
+  <a class="btn-floating btn-large orange">
+    <i class="large material-icons">apps</i>
+  </a>
+  <ul>
+    <li>
+      <%= link_to new_account_path, class: "btn-floating red" do %>
+        <i class="material-icons">add</i>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card-panel">
+      <div class="card-content">
+        <table class="striped">
+          <thead>
+            <tr>
+                            <th>
+                Bank
+              </th>
+                            <th>
+                Agency number
+              </th>
+                            <th>
+                Account number
+              </th>
+                            <th>
+                Account type
+              </th>
+                            <th style="width: 110px">#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @accounts.each do |
+              account | %>
+                <tr>
+                                      <td>
+                      <%= account.
+                        bank%>
+                    </td>
+                                        <td>
+                      <%= account.
+                        agency_number%>
+                    </td>
+                                        <td>
+                      <%= account.
+                        account_number%>
+                    </td>
+                                        <td>
+                      <%= account.
+                        account_type%>
+                    </td>
+                                        <td>
+                      <a class='dropdown-button btn' href='#' data-activates='ddoptions-<%= account.id %>' data-constrainWidth="false">Opções</a>
+                      <ul id='ddoptions-<%= account.id %>' class='dropdown-content large'>
+                        <li>
+                          <%= link_to edit_account_path(account) do %>
+                            <i class="material-icons">edit</i>Editar
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to account, method: :delete, data: { confirm: 'Você tem certeza?' } do %>
+                            <i class="material-icons">delete</i>Remover
+                          <% end %>
+                        </li>
+                      </ul>
+                    </td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

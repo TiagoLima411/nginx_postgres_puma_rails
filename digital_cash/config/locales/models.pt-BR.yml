@@ -1,0 +1,67 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+      account: Conta
+      income: Entrada
+      outgoing: Saída
+      account_extract: Extrato da conta
+    attributes:
+      user:
+        name: Nome
+        username: Username
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        active: Ativo
+        created_at: Data de Criação
+        role:
+          root: Root
+          member: Membro Clube
+          client: Cliente
+      member:
+        birthday: Data de Nascimento
+        phone: Telefone
+        email: E-mail
+        address: Endereço
+        zipcode: CEP
+        number: Número
+        complement: Complemento
+        district: Bairro
+        address_reference: Ponto de Referência
+        mother_name: Nome da Mãe
+        gender:
+          male: Masculino
+          female: Feminino
+          undefined: Indefinido
+        marital_status:
+          single: Solteiro
+          married: Casado
+          divorced: Divorciado
+          widower: Viúvo
+        member_type:
+          cpf: CPF
+          cnpj: CNPJ
+          mei: MEI
+      account:
+        agency_number: Número da Agência
+        account_number: Número da Conta
+        account_type:
+          cc: Conta Corrente
+          cp: Conta Poupança
+      income:
+        value: Valor
+        description: Descrição
+        intype:
+          deposit: Depósito
+          transfer: Transferência
+      outgoing:
+        value: Valor
+        description: Descrição
+        outtype:
+          with_draw: Saque
+          transfer: Transferência
+      account_extract:
+          type_register:
+            credit: Crédito 
+            debit: Débito

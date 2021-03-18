@@ -1,0 +1,57 @@
+<%= form_for(outgoing, :html => {class: "page-body list", multipart: true}) do |f| %>
+  <% if outgoing.errors.any? %>
+    <div class="row">
+      <ul class="collection with-header animated fadeInUp">
+        <% if outgoing.errors.count > 1 %>
+          <li class="collection-header"><h5><%= outgoing.errors.count %> erros impediram que o registro fosse salvo:</h5></li>
+        <% else %>
+          <li class="collection-header"><h5><%= outgoing.errors.count %> erro impediu que o registro fosse salvo:</h5></li>
+        <% end %>
+        <% outgoing.errors.full_messages.each do |message| %>
+          <li class="collection-item valign-wrapper"><i class="material-icons">error_outline</i>&nbsp;<span> <%= message %></span></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="row">
+      <div class="col-12">
+        <h4 class="form-section">Dados do Saque</h4>
+      </div>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :outtype, value: Outgoing.outtypes.keys[0] %>
+
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :value, class: "" %>
+          <%= f.text_field :value, required: true, class: "form-control currency" %>
+        </fieldset>
+      </div>
+    
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-0">
+        <fieldset class="form-group">
+          <span class="danger">*</span>
+          <%= f.label :description, class: "" %>
+          <%= f.text_field :description, required: true, class: "form-control" %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-actions right">
+        <div class="row d-flex justify-content-end">
+          <div class="col-12 mb-1 justify-content-end">
+            <button type="submit" class="btn btn-outline-primary js-submit form-submit" onclick="javascript: submitForm()" id="btn_submit">
+              <i class="ft-check"></i> Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

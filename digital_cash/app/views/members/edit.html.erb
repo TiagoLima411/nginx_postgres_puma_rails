@@ -1,0 +1,302 @@
+<!-- card -->
+<div class="content-wrapper">
+
+  <div class="content-header row">
+    <div class="content-header-left col-md-6 col-sm-12 mb-2">
+      <h3 class="content-header-title mb-0">Meu <b>Perfil</b></h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="card height-300">
+            <div class="card-header">
+              <h4 class="card-title">Meus Dados</h4>
+            </div>
+            <div class="card-content collapse show">
+              <div class="card-body">
+                <div class="row text-center">
+                  <div class="col-md-3 col-sm-3">
+                    <%= image_tag "user.png", class:"img-fluid" %>
+                  </div>
+                  <div class="col-md-9 col-sm-9">
+                    <p class="text-left"><b>Login:</b> <%= current_user.username %></p>
+                    <p class="text-left"><b>Nome:</b> <%= current_user.member.name  %></p>
+                    <p class="text-left"><b>Email:</b> <%= current_user.member.email %></p>
+                    <p class="text-left"><b>Telefone:</b> <%= current_user.member.phone %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% unless current_user.account.nil? %>
+          <div class="col-md-6 col-sm-12">
+            <div class="card height-300">
+              <div class="card-header">
+                <h4 class="card-title">Senha de Pagamento</h4>
+              </div>
+              <div class="card-content collapse show">
+                <div class="card-body">
+                  <div class="row text-center">
+                    <div class="col-md-12 col-sm-12">
+                      
+                      <%= form_for(@member, url: '/set_payment_password', method: :post, authenticity_token: true) do |f| %>
+                        <div class="row">
+
+                          <div class="col-md-6 col-sm-12 mb-2">
+                            <fieldset class="form-group">
+                              <label for="" class="label-register active">Senha de pagamento:</label>
+                              <%= f.password_field :payment_password, name:"payment_password", id:"payment_password", class:"form-control", placeholder: "Insira a nova senha", required:"required", minlength: 6 %>
+                            </fieldset>
+                          </div>
+
+                          <div class="col-md-6 col-sm-12 mb-2">
+                            <fieldset class="form-group">
+                              <label for="" class="label-register active">Repita senha de pagamento:</label>
+                              <%= f.password_field :payment_password_confirmation, name:"payment_password_confirmation", id:"payment_password_confirmation", onkeyup:"validationFunction()", class:"form-control", placeholder: "Repita a nova senha", required:"required", minlength: 6 %>
+                            </fieldset>
+                          </div>
+
+                          <div class="col-12 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-outline-primary" id="submit">
+                              <i class="ft-check"></i>&nbsp;&nbsp;Salvar
+                            </button>
+                          </div>
+                        </div>
+                      <% end %>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+
+      <%= form_for(@member, html: {id: "form_show_member_data", class: "page-body "}) do |f| %>
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title form-section">Dados Pessoais</h4>
+          </div>
+          <div class="card-content collapse show">
+            <div class="card-body pb-0">
+              <% if @member.errors.any? %>
+                <div class="row">
+                  <ul class="collection with-header animated fadeInUp">
+                    <% if @member.errors.count > 1 %>
+                      <li class="collection-header">
+                        <h5><%= @member.errors.count %> erros impediram que o registro fosse salvo:</h5>
+                      </li>
+                    <% else %>
+                      <li class="collection-header">
+                        <h5><%= @member.errors.count %> erro impediu que o registro fosse salvo:</h5>
+                      </li>
+                    <% end %>
+                    <% @member.errors.full_messages.each do |message| %>
+                      <li class="collection-item valign-wrapper">
+                        <i class="material-icons">error_outline</i>&nbsp;<span><%= message %></span>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+              <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Nome completo:</label>
+                    <%= f.text_field :name, class:"form-control", placeholder: "Seu Nome completo", required:"required", disabled:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">E-mail:</label>
+                    <%= f.email_field :email, class:"form-control", placeholder: "Seu Email", required:"required", disabled:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Telefone:</label>
+                    <%= f.text_field :phone, class:"form-control celular", placeholder: "Seu Celular", required:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Nascimento:</label>
+                    <%= f.text_field :birthday, value:"#{@member.birthday.strftime('%d/%m/%Y')}", class: "form-control datecurrentpicker", required:true %>
+                  </fieldset>
+                </div>
+              </div><!-- row -->
+
+              <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Sexo:</label>
+                    <%= f.select(:gender, Member.genders.keys.map {|gender| [Member.human_enum_name(:gender, gender), gender]}, { include_blank: false }, class: "form-control", id: 'cbbKind', reuired:true) %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">CPF:</label>
+                    <%= f.text_field :cpf, class:"form-control cpf", placeholder: "Seu Cpf", required:"required", disabled:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">RG:</label>
+                    <%= f.text_field :rg, class:"form-control", placeholder: "RG", required:"required", required:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Nome da Mãe:</label>
+                    <%= f.text_field :mother_name, class:"form-control", placeholder: "Nome da Mãe", required:"required", required:true %>
+                  </fieldset>
+                </div>
+              </div><!-- row -->
+            </div>
+          </div>
+
+          <div class="card-header pt-0">
+            <h4 class="card-title form-section">Endereço</h4>
+          </div>
+          <div class="card-content collapse show">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">CEP:</label>
+                    <%= f.text_field :zipcode, class:"form-control cep", placeholder: "Seu Cep", id: "cep", required:"required", required:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Endereço:</label>
+                    <%= f.text_field :address, class:"form-control", placeholder: "Seu Endereco", id:"logradouro", required:"required", required:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Número:</label>
+                    <%= f.text_field :address_number, class:"form-control", placeholder: "Número", required:"required", required:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Bairro:</label>
+                    <%= f.text_field :district, class:"form-control", placeholder: "Seu Bairro", id:"bairro", required:"required", required:true %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Complemento:</label>
+                    <%= f.text_field :complement, class:"form-control", placeholder: "Complemento", id:"complemento" %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Cidade:</label>
+                    <%= collection_select(:member, :city_id, City.all, :id, :name, {include_blank: "Selecione sua cidade"}, {id: 'cbbCity', :class=>'js-example-basic-single form-control', :style => "width: 100%;" }) %>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+                  <fieldset class="form-group">
+                    <label for="" class="">Estado:</label>
+                    <%= collection_select(:member, :state_id, State.all, :id, :name, {include_blank: "Selecione seu estado"}, {id: 'cbbState', :class=>' form-control', :style => "width: 100%;" }) %>
+                  </fieldset>
+                </div>
+              </div><!-- row -->
+
+              <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                  <button type="submit" class="btn btn-outline-primary" id="save_submit">
+                    <i class="ft-check"></i>&nbsp;&nbsp;Salvar
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- row -->
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Redefinir Senha</h4>
+    </div>
+    <div class="card-content collapse show">
+      <div class="card-body">
+        <div class="card">
+          <div class="card-content collapse show">
+            <%= form_for(@member, url: '/member_change_password', authenticity_token: true) do |f| %>
+              <div class="row">
+                <div class="col-md-4 col-sm-12 mb-2">
+                  <fieldset class="form-group">
+                    <label for="" class="label-register active">Senha atual:</label>
+                    <%= f.password_field :password, name:"password", class:"form-control", placeholder: "Senha atual", required:"required", minlength: 6 %>
+                  </fieldset>
+                </div>
+
+                <div class="col-md-4 col-sm-12 mb-2">
+                  <fieldset class="form-group">
+                    <label for="" class="label-register active">Digite a nova senha:</label>
+                    <%= f.password_field :new_password, name:"new_password", id:"new_password", class:"form-control", placeholder: "Insira a nova senha", required:"required", minlength: 6 %>
+                  </fieldset>
+                </div>
+
+                <div class="col-md-4 col-sm-12 mb-2">
+                  <fieldset class="form-group">
+                    <label for="" class="label-register active">Repita a senha:</label>
+                    <%= f.password_field :new_password_confirmation, name:"new_password_confirmation", id:"new_password_confirmation", onkeyup:"validationFunction()", class:"form-control", placeholder: "Repita a nova senha", required:"required", minlength: 6 %>
+                  </fieldset>
+                </div>
+
+                <div class="col-12 d-flex justify-content-end">
+                  <button type="submit" class="btn btn-outline-primary" id="submit">
+                    <i class="ft-check"></i>&nbsp;&nbsp;Mudar Senha
+                  </button>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  document.getElementById('submit').setAttribute('disabled', 'disabled');
+
+  function validationFunction() {
+    var new_password = document.getElementById("new_password").value;
+    var new_password_confirmation = document.getElementById("new_password_confirmation");
+
+    if (new_password != new_password_confirmation.value){
+      document.getElementById('submit').setAttribute('disabled', 'disabled');
+    } else if (new_password == new_password_confirmation.value) {
+      document.getElementById('submit').removeAttribute('disabled');
+    } else{
+      document.getElementById('submit').setAttribute('disabled', 'disabled');
+    }
+  }
+</script>

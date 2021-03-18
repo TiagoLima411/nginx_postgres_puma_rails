@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= csrf_meta_tag %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'login', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  <title>Digital Cash</title>
+  <% icon = image_url ""%>
+  <link rel="shortcut icon" href="<%= icon %>">
+  <link rel="stylesheet" type="text/css" href="/app-assets/css/vendors.css">
+  <link rel="stylesheet" type="text/css" href="/app-assets/css/app.css">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+
+<body>
+<div class="">
+  <%= yield %>
+</div>
+
+</body>
+</html>

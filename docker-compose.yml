@@ -22,7 +22,7 @@ services:
   app:
     build: .
     volumes:
-      - ./rails_app:/rails_app
+      - ./digital_cash:/digital_cash
     environment:
       - RAILS_ENV=${RAILS_ENV}
     ports:

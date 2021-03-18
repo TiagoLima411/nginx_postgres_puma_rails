@@ -1,0 +1,209 @@
+<%= form_for(bank_transaction, :html => {class: "page-body list", multipart: true}) do |f| %>
+  <% if bank_transaction.errors.any? %>
+    <div class="row">
+      <ul class="collection with-header animated fadeInUp">
+        <% if bank_transaction.errors.count > 1 %>
+          <li class="collection-header"><h5><%= bank_transaction.errors.count %> erros impediram que o registro fosse salvo:</h5></li>
+        <% else %>
+          <li class="collection-header"><h5><%= bank_transaction.errors.count %> erro impediu que o registro fosse salvo:</h5></li>
+        <% end %>
+        <% bank_transaction.errors.full_messages.each do |message| %>
+          <li class="collection-item valign-wrapper"><i class="material-icons">error_outline</i>&nbsp;<span> <%= message %></span></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="row">
+        <div class="col-12">
+            <h4 class="form-section">Dados da Transação</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Dados do Favorecido</h5>
+                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <div class="content-header-right d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary d-flex align-items-center mb-0 ml-1 px-2" data-toggle="modal" data-target="#default">
+                            <i class="fa fa-search"></i>&nbsp;&nbsp;Pesquisar
+                        </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-12 col-sm-12 mb-0">
+                                <fieldset class="form-group">
+                                <p style="font-weight: bold;">Nome:   <span class="" id="benefited_name"></span></p>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 mb-0">
+                                <fieldset class="form-group">
+                                <p style="font-weight: bold;">Banco:   <span class="" id="benefited_bank"></span></p>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 mb-0">
+                                <fieldset class="form-group">
+                                <p style="font-weight: bold;">Agência:   <span class="" id="benefited_agency"></span></p>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 mb-0">
+                                <fieldset class="form-group">
+                                <p style="font-weight: bold;">Conta:   <span class="" id="benefited_account_number"></span></p>
+                                </fieldset>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-actions">
+                                    <div class="col-4">
+                                        <fieldset class="form-group">
+                                            <span class="danger">*</span>
+                                            <%= f.label "Valor da Transferência: ", class: "" %>
+                                            <%= f.text_field :net_value, required: true, class: "form-control currency" %>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-4">
+                                        <fieldset class="form-group">
+                                            <span class="danger">*</span>
+                                            <%= f.label "Descrição: ", class: "" %>
+                                            <%= f.text_field :description, required: true, class: "form-control" %>
+                                        </fieldset>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :benefited_user_id, id: "benefited_user_id" %>
+
+    <div class="col-12">
+      <div class="form-actions right">
+        <div class="row d-flex justify-content-end">
+          <div class="col-12 mb-1 justify-content-end">
+            <button type="submit" class="btn btn-outline-primary js-submit form-submit" onclick="javascript: submitForm()" id="btn_submit">
+              <i class="ft-check"></i> Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+
+<div class="modal fade text-left" id="default" role="dialog" aria-labelledby="myModalLabel2" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1"><i class="ft-filter"></i>&nbsp;&nbsp;Dados Bancarios do Favorecido</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form class="form">
+        <div class="modal-body">
+          <div class="form-body">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label for="issueinput1">Banco</label>
+                    <%= select_tag(:bank_id, options_for_select(get_banks, params[:bank_id]), { include_blank: "Todos", class: "select2", style: "width: 100% !important" }) %>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="issueinput2">Tipo de conta</label>
+                  <%= select_tag(:kind, options_for_select(Account.account_types.keys.map{|account_type|[Account.human_enum_name(:account_type, account_type), Account.account_types[account_type]]}, params[:kind]), { include_blank: "", class: " form-control" }) %>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="issueinput3">Agência</label>
+                  <%= text_field_tag 'agency', nil, placeholder: 'Ex.: 432432', value: "#{(params[:agency])}", class: "form-control" %>
+                </div>
+              </div>
+               <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="issueinput4">Número da Conta</label>
+                  <%= text_field_tag 'account_number', nil, placeholder: 'Ex.: 432432', value: "#{(params[:account_number])}", class: "form-control" %>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" onclick="get_benefited()" class="btn grey btn-outline-secondary" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.select2').select2({
+        "language": {
+            "noResults": function(){
+                return "Nenhum Resultado Encontrado!";
+            }
+        },
+        escapeMarkup: function (markup) {
+            return markup;
+        }
+    });
+
+    function get_benefited(){
+        
+        path = "/get_account_from_ajax?bank_id="+$('#bank_id').val()+"&kind="+$('#kind').val()+"&agency="+$('#agency').val()+"&account_number="+$('#account_number').val()
+        
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: path,
+            cache: false,
+            success: function (res) {
+
+                if (typeof res !== 'undefined' && res.accounts.length > 0) {
+                    clear_benefited_spans();
+
+                    $('#benefited_name').text(res.accounts[0].user.name)
+                    $('#benefited_bank').text(res.accounts[0].bank.name + " - " + res.accounts[0].bank.code)
+                    $('#benefited_agency').text(res.accounts[0].agency_number)
+                    $('#benefited_account_number').text(res.accounts[0].account_number)
+                    $('#benefited_user_id').val(res.accounts[0].user.id)
+
+                } else {
+                    alert('Favorecido não encontrado. Ou dados insuficientes')
+                }
+            }, 
+            error: function (xhr, textStatus, error) {
+                console.log(error);
+            }
+        })
+    }
+
+    function clear_benefited_spans() {
+        $('#benefited_name').text('')
+        $('#benefited_bank').text('')
+        $('#benefited_agency').text('')
+        $('#benefited_account_number').text('')
+    }
+</script>

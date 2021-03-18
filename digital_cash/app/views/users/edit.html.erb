@@ -1,0 +1,107 @@
+<section class="page-header">
+  <div class="container-inner">
+    <div class="row">
+      <div class="col s6">
+        <h2 class="page-header--title">Edição Membro</h2>
+      </div>
+      <div class="col s6 right-align">
+        <%= link_to 'voltar', members_path, :class => "page-header--btnAction" %>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container-inner" style="">
+  <%= form_for(@user, :url => url_for(:controller => 'users', :action => 'update'), :html => { :class => "page-body list"}) do |f| %>
+    <% if @user.errors.any? %>
+      <div class="row">
+        <ul class="collection with-header animated fadeInUp">
+          <% if @user.errors.count > 1 %>
+            <li class="collection-header"><h5><%= @user.errors.count %> erros impediram que o registro fosse salvo:</h5></li>
+          <% else %>
+            <li class="collection-header"><h5><%= @user.errors.count %> erro impediu que o registro fosse salvo:</h5></li>
+          <% end %>
+          <% @user.errors.full_messages.each do |message| %>
+            <li class="collection-item valign-wrapper"><i class="material-icons">error_outline</i>&nbsp;<span> <%= message %></span></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.fields_for :member do |member_form| %>
+
+      <div class="row">
+        <div class="col s6">
+          <%= f.label :name, :class => "form-input--label" %>
+          <%= f.text_field :name, :class => "form-input--field" %>
+        </div>
+          <div class="col s6">
+            <%= member_form.label :email, :class => "form-input--label" %>
+            <%= member_form.text_field :email, :class => "form-input--field" %>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <%= member_form.label :birthday, :class => "form-input--label" %>
+          <%= member_form.text_field :birthday, :class => "form-input--field datepicker" %>
+        </div>
+        <div class="col s6">
+          <%= member_form.label :cpf, :class => "form-input--label" %>
+          <%= member_form.text_field :cpf, :class => "form-input--field cpf" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <%= member_form.label :phone, :class => "form-input--label" %>
+          <%= member_form.text_field :phone, :class => "form-input--field" %>
+        </div>
+        <div class="col s6">
+          <%= member_form.label :address, :class => "form-input--label" %>
+          <%= member_form.text_field :address, :class => "form-input--field" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <%= member_form.label :zipcode, :class => "form-input--label" %>
+          <%= member_form.text_field :zipcode, :class => "form-input--field cep" %>
+        </div>
+        <div class="col s6">
+          <%= member_form.label :city_id, :class => "form-input--label" %>
+          <%= member_form.text_field :city_id, :class => "form-input--field" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <%= member_form.label :state_id, :class => "form-input--label" %>
+          <%= member_form.text_field :state_id, :class => "form-input--field" %>
+        </div>
+        <div class="col s6">
+          <%= member_form.label :complement, :class => "form-input--label" %>
+          <%= member_form.text_field :complement, :class => "form-input--field" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <%= member_form.label :number, :class => "form-input--label" %>
+          <%= member_form.text_field :number, :class => "form-input--field" %>
+        </div>
+        <div class="col s6">
+          <%= member_form.label :district, :class => "form-input--label" %>
+          <%= member_form.text_field :district, :class => "form-input--field"  %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="row">
+      <div class="col s12 right-align">
+        <%= f.submit 'Salvar', :class=> "waves-effect waves-light btn-large" %>
+        <%= link_to 'Voltar', '/dashboard', class: "waves-effect waves-light btn-large blue-grey lighten-3" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+

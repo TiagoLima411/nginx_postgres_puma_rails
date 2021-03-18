@@ -1,0 +1,2 @@
+class CryptoCurrencie < ApplicationRecord
+end

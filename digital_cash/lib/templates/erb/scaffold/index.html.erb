@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col s8 m8">
+    <h4 class="hydra-title--page">
+      <%= plural_table_name.titleize %> Cadastrados
+    </h4>
+  </div>
+  <div class="col s4 m4">
+    <%%= form_tag <%= plural_table_name %>_path, :method => "get" do %>
+      <input id="search_term" name="search_term" type="search" 
+      placeholder="Pesquisar" class="hydra-input--search" value="<%%= !@search.nil? ? @search : '' %>" required>
+    <%% end %>
+  </div>
+</div>
+
+<div class="fixed-action-btn vertical">
+  <a class="btn-floating btn-large orange">
+    <i class="large material-icons">apps</i>
+  </a>
+  <ul>
+    <li>
+      <%%= link_to new_<%= singular_table_name %>_path, class: "btn-floating red" do %>
+        <i class="material-icons">add</i>
+      <%% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card-panel">
+      <div class="card-content">
+        <table class="striped">
+          <thead>
+            <tr>
+              <% attributes.reject(&:password_digest?).each do |attribute| -%>
+              <th>
+                <%= attribute.human_name %>
+              </th>
+              <% end -%>
+              <th style="width: 110px">#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%% @<%= plural_table_name %>.each do |
+              <%= singular_table_name %> | %>
+                <tr>
+                  <% attributes.reject(&:password_digest?).each do |attribute| -%>
+                    <td>
+                      <%%= <%= singular_table_name %>.
+                        <%= attribute.name %>%>
+                    </td>
+                    <% end -%>
+                    <td>
+                      <a class='dropdown-button btn' href='#' data-activates='ddoptions-<%%= <%= singular_table_name %>.id %>' data-constrainWidth="false">Opções</a>
+                      <ul id='ddoptions-<%%= <%= singular_table_name %>.id %>' class='dropdown-content large'>
+                        <li>
+                          <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>) do %>
+                            <i class="material-icons">edit</i>Editar
+                          <%% end %>
+                        </li>
+                        <li>
+                          <%%= link_to <%= singular_table_name %>, method: :delete, data: { confirm: 'Você tem certeza?' } do %>
+                            <i class="material-icons">delete</i>Remover
+                          <%% end %>
+                        </li>
+                      </ul>
+                    </td>
+                </tr>
+            <%% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+  <div class="content-header row d-flex align-items-center">
+    <div class="content-header-left col-md-6 col-sm-6 col-6 mb-1">
+      <h3 class="content-header-title mb-0">Editar Conta</h3>
+    </div>
+    <div class="content-header-right d-flex justify-content-end col-md-6 col-sm-6 col-6 mb-1">
+      <div class="btn-group float-md-right ml-1">
+        <%= link_to dashboard_path, class:"btn btn-outline-primary d-flex align-items-center" do %>
+          <i class="ft-arrow-left"></i>&nbsp;&nbsp;Voltar
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-content collapse show">
+          <div class="card-body">
+            <%= render 'form', account: @account %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.pagseguro.uol.com.br/checkout/v2/installments.json?amount=10.00&creditCardBrand=visa&sessionId=24592eb4756f4469b8c5b31198ccc28f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Alt-Svc:
+      - h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Date:
+      - Fri, 12 Feb 2021 20:16:29 GMT
+      Ec-Rule-Version:
+      - 20210119-01
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=CNn+zfpBKwp7WEh7J6K0MA**.ps; Path=/; Secure; SameSite=Strict
+      - csrfId=55; Path=/; HttpOnly; Expires=13 Feb 2021 24:16:28 GMT; Secure; SameSite=Strict
+      Vary:
+      - User-Agent
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '203'
+    body:
+      encoding: UTF-8
+      string: '{"error":false,"installments":{"visa":[{"quantity":1,"installmentAmount":10.00,"totalAmount":10.00,"interestFree":true},{"quantity":2,"installmentAmount":5.23,"totalAmount":10.45,"interestFree":false}]}}'
+  recorded_at: Fri, 12 Feb 2021 20:16:29 GMT
+recorded_with: VCR 6.0.0

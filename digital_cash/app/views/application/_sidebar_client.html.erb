@@ -1,0 +1,69 @@
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow lateralmenu-onpax" data-scroll-to-active="true"
+     style="background-image: linear-gradient(to bottom, #062645, #225e76);">
+  <div class="main-menu-content">
+    <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="background:transparent">
+
+      <li class="nav-item " id="dashboard_user">
+        <a href="#"><i><%= image_tag  "dashboard_icon.svg", width:"20px" %></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+        <ul class="menu-content">
+          <li id="dashboard_user_li">
+            <%= link_to "Geral", dashboard_url, class: "menu-item" %>
+          </li>
+        </ul>
+      </li>
+        <li class=" nav-item" id="cadastro-user">
+          <a href="#"><i><%= image_tag "cadastrar_ico.svg", width:"20px" %></i><span class="menu-title" data-i18n="">Conta</span></a>
+          <% if current_user.account.nil? %>
+            <ul class="menu-content">
+              <li class="" id="my-account-user"><a class="menu-item" href="/accounts/new">Cadastrar Conta</li>
+            </ul>
+          <% elsif current_user.account.active %>
+            <ul class="menu-content">
+              <li class="" id="my-account-user"><a class="menu-item" href="/accounts/<%= current_user.account.id %>/edit">Editar</a></li>
+            </ul>
+          <% end %>
+        </li>
+      <% unless current_user.account.nil? %>
+        <li class=" nav-item" id="finances-user">
+          <a href="#"><i><%= image_tag "transacoes_menu_icon.svg", width:"20px" %></i><span class="menu-title" data-i18n="">Financeiro</span></a>
+          <% if current_user.account.active %>
+            <ul class="menu-content">
+              <li class="" id="transaction-finacil"><a class="menu-item" href="/recharges/new">Recarga</a></li>
+              <li class="" id="withdral"><a class="menu-item" href="/outgoings/new">Saques</a></li>
+              <li class="" id="extract-finacial"><a class="menu-item" href="/bank_transactions/new">Transferências</a></li>
+              <li class="" id="extract-finacial"><a class="menu-item" href="/account_extracts">Saldo/Extrato</a></li>
+            </ul>
+          <% end %>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
+</div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+    if (window.location.pathname == "/dashboard"){
+      document.querySelector('#dashboard_user_li').classList.add('active');
+      document.querySelector('#dashboard_user').classList.remove('hover');
+      document.querySelector('#dashboard_user').classList.add('open');
+
+    } else if (window.location.pathname == "/accounts"){
+      document.querySelector('#my-account-user').classList.add('active');
+
+    } else if (window.location.pathname == "/account_extract"){
+      document.querySelector('#extract-finacial').classList.add('active');
+      document.querySelector('#finances-user').classList.remove('hover');
+      document.querySelector('#finances-user').classList.add('open');
+
+    } else if (window.location.pathname == "/bonus_payments"){
+      document.querySelector('#withdral').classList.add('active');
+      document.querySelector('#finances-user').classList.remove('hover');
+      document.querySelector('#finances-user').classList.add('open');
+    } 
+    
+  });
+
+</script>

@@ -1,0 +1,269 @@
+//*= require toastr
+//*= require base/bootstrap
+//*= require base/bootstrap-extended
+//*= require base/vertical-menu
+//*= require base/bootstrap-datetimepicker
+//*= require base/select2
+//*= require base/morris
+//*= require base/jquery-jvectormap
+//*= require base/palette-gradient
+//*= require base/nouislider
+//*= require base/noui-slider
+//@import 'flipclock';
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: font-url("Montserrat-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Myriad-bold";
+  src: font-url("Bahij-Myriad-Arabic-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Myriad-regular";
+  src: font-url("Bahij-Myriad-Arabic-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "helvetica-light";
+  src: font-url("helvetica-neue-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "helvetica-neue-bold";
+  src: font-url("helvetica-neue-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FranckeMedium";
+  src: font-url("Francke_W01_Medium.ttf") format("truetype");
+}
+
+.main-logo{
+  color: white;
+  font-family: FranckeMedium;
+  font-size: 28px
+}
+
+
+//******************************
+// ==============================
+// TREE
+// ==============================
+.tree {
+  display: block;
+  width: 100%;
+  height: 100%;
+  //margin-left: calc(50% - 35%);
+}
+
+.tree ul {
+  padding-top: 15px;
+  position: relative;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  width: inherit;
+  height: inherit;
+}
+
+.tree ul:nth-child(1) {
+  background-color: transparent;
+}
+
+.tree li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  // padding: 10px 5px 0 5px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.tree .disabled {
+  width: 80px !important;
+  a {
+    width: 42px;
+    height: 40px;
+    background: #BFCAD5;
+  }
+
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before,
+.tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  // right: 50%;
+  border-top: 2px solid #BFCAD5;
+  width: 50%;
+  height: 20px;
+}
+
+.tree li::before {
+  right: 50%;
+  left: auto;
+  border-right: 2px solid #BFCAD5;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid #BFCAD5;
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child {
+  padding-top: 0;
+}
+
+/*Remove left connector from first child and
+right connector from last child*/
+.tree li:first-child::before,
+.tree li:last-child::after {
+  border: 0 none;
+}
+
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before {
+  border-right: 2px solid #BFCAD5;
+  border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  -moz-border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  -moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  // border-left: 2px dashed #BFCAD5;
+  width: 0;
+  height: 20px;
+}
+
+.tree li a span {
+  display: flex;
+  flex-direction: column;
+}
+
+.tree li a {
+  background-color: white;
+  padding: .5rem 0.7rem;
+  margin: 18px 0 0 0;
+  text-decoration: none;
+  color: #666;
+  font-family: 'HelveticaNeue';
+  font-size: 1rem;
+  display: inline-block;
+  border-radius: 20px;
+  border: 2px solid #dce0e6;
+  transition: all 0.5s;
+  text-transform: capitalize;
+  justify-items: center;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover,
+.tree li a:hover+ul li a {
+  background: #fafafa;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 21px rgba(0, 0, 0, 0.1);
+}
+
+.tree .disabled a:hover,
+.tree .disabled a:hover+ul .disabled a {
+  background: #BFCAD5;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 21px rgba(0, 0, 0, 0.1);
+}
+
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul::before,
+.tree li a:hover+ul ul::before {
+  border-color: #29afa3 !important;
+}
+
+
+// CSS MN
+
+.content-card-mn {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  width: 200px;
+  height: 200px;
+  // position: relative;
+}
+
+.dot-user{
+  width: 12px;
+  height: 12px;
+  background-color: #3c3c3c;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.img-user-1 {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.img-user-2 {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 88px;
+  right: 0;
+  top: 60px;
+}
+
+//Fim MN
+
+.row .vdivide {
+  background: #e0e0e0;
+  width: 1px;
+  content: "";
+  display: flex;
+  min-height: 50px;
+  margin: 5px;
+}
+
+.icon-border {
+  height: 35px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+}
+
+.icon-noborder { height: 35px; }
+
+@media (max-width : 720px) {
+  .row .vdivide { transform: rotate(90deg) !important;}
+}

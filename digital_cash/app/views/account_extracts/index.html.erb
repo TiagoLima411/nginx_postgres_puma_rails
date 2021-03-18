@@ -1,0 +1,126 @@
+<div class="content-wrapper">
+  <div class="content-header row d-flex align-items-center justify-content-end">
+    <div class="content-header-left col-md-6 col-sm-6 mb-1">
+      <h3 class="content-header-title mb-0">Extrato da Conta</h3>
+    </div>
+
+    <div class="content-header-left col-lg-3 offset-lg-3 col-md-4 col-sm-6 mb-0">
+      <div class="card">
+        <div class="card-header px-1 pt-1 pb-0">
+          <h6 class="content-header-title mb-0 d-flex justify-content-start">Saldo</h6>
+        </div>
+        <div class="card-content px-1 pt0 pb-1">
+          <div class="card-text">
+            <h2 class="d-flex justify-content-end text-bold-600">
+              <%= display_cent_in_money(@total_available) %>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Extrato Financeiro</h4>
+          <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+          <div class="heading-elements">
+            <div class="content-header-right d-flex justify-content-end">
+              <button type="button" class="btn btn-secondary d-flex align-items-center mb-0 ml-1 px-2" data-toggle="modal" data-target="#default">
+                <i class="fa fa-search"></i>&nbsp;&nbsp;Pesquisar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content collapse show">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th class="text-center">Data Mov.</th>
+                    <th>Descrição</th>
+                    <th class="text-center">Tipo de registro</th>
+                    <th class="text-center">Valor</th>
+                    <th class="text-center">Saldo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @account_extract.each do |extract| %>
+                    <tr>
+                      <td class="text-center"><%= extract.created_at.strftime('%d/%m/%Y') %></td>
+                      <td><%= extract.description %></td>
+                      <% if AccountExtract.human_enum_name(:type_register, extract.type_register) == "Crédito" %>
+                        <td class="success text-center"><%= AccountExtract.human_enum_name(:type_register, extract.type_register) %></td>
+                      <% else %>
+                        <td class="danger text-center"><%= AccountExtract.human_enum_name(:type_register, extract.type_register) %></td>
+                      <% end %>
+                      <td class="text-center"><%= display_money(Money.new(extract.value_cents)) %></td>
+                      <td class="text-center"><%= display_money(Money.new(extract.balance_cents)) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <%= will_paginate @account_extract, previous_label: t("<"), next_label: t(">"), list_classes: %w(pagination justify-content-end mt-1) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1"><i class="ft-filter"></i>&nbsp;&nbsp;Filtro</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form class="form">
+        <div class="modal-body">
+          <div class="form-body">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="issueinput2">Tipo</label>
+                  <%= select_tag(:type_register, options_for_select(AccountExtract.type_registers.keys.map{|type_register|[AccountExtract.human_enum_name(:type_register, type_register), AccountExtract.type_registers[type_register]]}, params[:type_register]), { include_blank: "Todos", class: " form-control" }) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="issueinput3">Data Inicial</label>
+                  <%= date_field_tag "date_filter_inicial", nil, class: "form-control datepicker", value: "#{(params[:date_filter_inicial])}", placeholder: "Data inicial" %>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="issueinput4">Data Final</label>
+                  <%= date_field_tag "date_filter_final", nil, class: "form-control datepicker", value: "#{(params[:date_filter_final])}", placeholder: "Data inicial" %>
+                </div>
+              </div>
+            </div>
+
+            <% unless params[:user_id].nil? %>
+              <input type="hidden" name="user_id" value="<%= params[:user_id] %>">
+            <% end %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar</button>
+          <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i>&nbsp;&nbsp;Pesquisar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

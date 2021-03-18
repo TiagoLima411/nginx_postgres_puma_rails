@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}.cls-2{fill:#f49000}.cls-3{fill:#d6000b}
+        </style>
+    </defs>
+    <g id="Group_18908" data-name="Group 18908" transform="translate(-112 -768)">
+        <g id="Ico" transform="translate(112 768)">
+            <g id="bg">
+                <rect id="Rectangle_945" width="40" height="40" class="cls-1" data-name="Rectangle 945" rx="4"/>
+            </g>
+        </g>
+        <ellipse id="Ellipse_1768" cx="8.044" cy="8.142" class="cls-2" data-name="Ellipse 1768" rx="8.044" ry="8.142" transform="translate(124.782 780.158)"/>
+        <path id="Path_12790" d="M128.353 39a10.224 10.224 0 0 1 3.891-8.034 10.247 10.247 0 1 0 0 16.067A10.224 10.224 0 0 1 128.353 39z" class="cls-3" data-name="Path 12790" transform="translate(.055 749.248)"/>
+        <path id="Path_12792" d="M149.1 28.752a10.2 10.2 0 0 0-6.355 2.212 10.24 10.24 0 0 1 0 16.067 10.245 10.245 0 1 0 6.355-18.28z" class="cls-2" data-name="Path 12792" transform="translate(-10.441 749.248)"/>
+    </g>
+</svg>

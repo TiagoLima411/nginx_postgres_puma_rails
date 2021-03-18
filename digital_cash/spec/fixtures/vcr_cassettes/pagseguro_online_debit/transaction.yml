@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws.sandbox.pagseguro.uol.com.br/transactions/
+    body:
+      encoding: UTF-8
+      string: email=tiagolima.0411%40gmail.com&token=<you_token>&payment.mode=default&payment.method=eft&bank.name=itau&currency=BRL&item[1].id=1&item[1].description=Recargar%20em%20conta&item[1].amount=11.00&item[1].quantity=1&notificationURL=http%3A%2F%2Flocalhost%3A3000%2Fpagseguro%2Fnotify&reference=ORDER123&sender.name=Tiago%20de%20Lima%20Alves&sender.CPF=16261677026&sender.areaCode=82&sender.phone=999999999&sender.email=tiago%40sandbox.pagseguro.com.br&shipping.address.street=Conj.%20Celly%20Loureiro%2C%20Qd%20-%20E&shipping.address.number=71&shipping.address.complement=5o%20andar&shipping.address.district=Benedito%20Bentes&shipping.address.postalCode=57084-000&shipping.address.city=Macei%C3%B3&shipping.address.state=AL&shipping.address.country=BRA&shipping.type=3&shipping.cost=0.00
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.pagseguro.com.br.v3+xml
+      Content-Length:
+      - '1703'
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 14 Feb 2021 14:41:10 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 fe2d13b70dea8ad9529d03ea2714058f.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - GIG51-C1
+      X-Amz-Cf-Id:
+      - _ZbWy6Tec49ZicAkUI_jsusB3yzwnbenK6lZ-rgPqDFZFyDQKphT4w==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pjx0cmFuc2FjdGlvbj48ZGF0ZT4yMDIxLTAyLTE0VDExOjQxOjAxLjAwMC0wMzowMDwvZGF0ZT48Y29kZT40QzE2N0VCQi01QTlDLTQwN0QtQTc2Ny0yMDBFOEI3Njc4Njc8L2NvZGU+PHJlZmVyZW5jZT5PUkRFUjEyMzwvcmVmZXJlbmNlPjxyZWNvdmVyeUNvZGU+N2RmNWE2OGRkODhjNTBiYjZlNjlmM2JlMDFiZjQxZTdkZTlhMDIyMGVkODQwM2ZlPC9yZWNvdmVyeUNvZGU+PHR5cGU+MTwvdHlwZT48c3RhdHVzPjE8L3N0YXR1cz48bGFzdEV2ZW50RGF0ZT4yMDIxLTAyLTE0VDExOjQxOjA0LjAwMC0wMzowMDwvbGFzdEV2ZW50RGF0ZT48cGF5bWVudE1ldGhvZD48dHlwZT4zPC90eXBlPjxjb2RlPjMwMjwvY29kZT48L3BheW1lbnRNZXRob2Q+PHBheW1lbnRMaW5rPmh0dHBzOi8vc2FuZGJveC5wYWdzZWd1cm8udW9sLmNvbS5ici9jaGVja291dC9wYXltZW50L2VmdC9wcmludC5qaHRtbD9jPTFjYzJlZjkwY2I2YmQwNWRmOGI0NzliMmQ5OTNlMDFlNGYyYTM1MzA1MWRlOGFiODYyZGMzZGU2OWRmOWViNmViMWEyMmUxOWJjOGZiOGU4PC9wYXltZW50TGluaz48Z3Jvc3NBbW91bnQ+MTEuMDA8L2dyb3NzQW1vdW50PjxkaXNjb3VudEFtb3VudD4wLjAwPC9kaXNjb3VudEFtb3VudD48Y3JlZGl0b3JGZWVzPjxpbnRlcm1lZGlhdGlvblJhdGVBbW91bnQ+MC40MDwvaW50ZXJtZWRpYXRpb25SYXRlQW1vdW50PjxpbnRlcm1lZGlhdGlvbkZlZUFtb3VudD4wLjU1PC9pbnRlcm1lZGlhdGlvbkZlZUFtb3VudD48L2NyZWRpdG9yRmVlcz48bmV0QW1vdW50PjEwLjA1PC9uZXRBbW91bnQ+PGV4dHJhQW1vdW50PjAuMDA8L2V4dHJhQW1vdW50PjxpbnN0YWxsbWVudENvdW50PjE8L2luc3RhbGxtZW50Q291bnQ+PGl0ZW1Db3VudD4xPC9pdGVtQ291bnQ+PGl0ZW1zPjxpdGVtPjxpZD4xPC9pZD48ZGVzY3JpcHRpb24+UmVjYXJnYXIgZW0gY29udGE8L2Rlc2NyaXB0aW9uPjxxdWFudGl0eT4xPC9xdWFudGl0eT48YW1vdW50PjExLjAwPC9hbW91bnQ+PC9pdGVtPjwvaXRlbXM+PHNlbmRlcj48bmFtZT5UaWFnbyBkZSBMaW1hIEFsdmVzPC9uYW1lPjxlbWFpbD50aWFnb0BzYW5kYm94LnBhZ3NlZ3Vyby5jb20uYnI8L2VtYWlsPjxwaG9uZT48YXJlYUNvZGU+ODI8L2FyZWFDb2RlPjxudW1iZXI+OTk5OTk5OTk5PC9udW1iZXI+PC9waG9uZT48ZG9jdW1lbnRzPjxkb2N1bWVudD48dHlwZT5DUEY8L3R5cGU+PHZhbHVlPjE2MjYxNjc3MDI2PC92YWx1ZT48L2RvY3VtZW50PjwvZG9jdW1lbnRzPjwvc2VuZGVyPjxzaGlwcGluZz48YWRkcmVzcz48c3RyZWV0PkNvbmouIENlbGx5IExvdXJlaXJvLCBRZCAtIEU8L3N0cmVldD48bnVtYmVyPjcxPC9udW1iZXI+PGNvbXBsZW1lbnQ+NW8gYW5kYXI8L2NvbXBsZW1lbnQ+PGRpc3RyaWN0PkJlbmVkaXRvIEJlbnRlczwvZGlzdHJpY3Q+PGNpdHk+TWFjZWnDszwvY2l0eT48c3RhdGU+QUw8L3N0YXRlPjxjb3VudHJ5PkJSQTwvY291bnRyeT48cG9zdGFsQ29kZT41NzA4NDAwMDwvcG9zdGFsQ29kZT48L2FkZHJlc3M+PHR5cGU+MzwvdHlwZT48Y29zdD4wLjAwPC9jb3N0Pjwvc2hpcHBpbmc+PHByaW1hcnlSZWNlaXZlcj48cHVibGljS2V5PlBVQjM0QTY2QjZGNjY3QTRCMjBBMjc5QkJGNUM4MTBDMTIwPC9wdWJsaWNLZXk+PC9wcmltYXJ5UmVjZWl2ZXI+PC90cmFuc2FjdGlvbj4=
+  recorded_at: Sun, 14 Feb 2021 14:41:10 GMT
+recorded_with: VCR 6.0.0
