@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   get '/bank_transaction_payment_password', to: 'session_payments#middleware_bank_transaction_payment_password'
 
   namespace :api, defaults: {format: :json} do
+    # Hello Word
+    get 'greeting', to: 'users#greeting'
+    
     # CoinGueck paths
     get 'coins/list', to: 'coingecko#index'
 
