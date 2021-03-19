@@ -17,23 +17,6 @@ class ApplicationController < ActionController::Base
 
   include Response
 
-  #def authorize_request
-  #  if request.format == "application/json"
-  #    if request.headers['Authorization'].present?
-  #      auth = request.headers['Authorization']
-  #      if auth.eql?(Rails.application.credentials.orakulo_auth_token)
-  #        @user ||= User.find(908)
-  #      else
-  #        authenticate_user!
-  #      end
-  #    else
-  #      authenticate_user!
-  #    end
-  #  else
-  #    authenticate_user!
-  #  end
-  #end
-
   def after_sign_in_path_for(_resource)
     '/dashboard'
   end
