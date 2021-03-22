@@ -1,0 +1,151 @@
+// Place all the styles related to the webhook controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+    font-family: "Montserrat-Medium";
+    src: font-url("Montserrat-Medium.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Myriad-bold";
+    src: font-url("Bahij-Myriad-Arabic-Bold.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Myriad-regular";
+    src: font-url("Bahij-Myriad-Arabic-Regular.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "helvetica-light";
+    src: font-url("helvetica-neue-light.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "helvetica-neue-bold";
+    src: font-url("helvetica-neue-bold.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "FranckeMedium";
+    src: font-url("Francke_W01_Medium.ttf") format("truetype");
+  }
+  
+  
+  body {
+    // background: url("../../assets/images/background.jpg");
+    background: image-url("bg_sistema.png") no-repeat left top;
+    background-size: cover;
+  }
+  
+  .title-bold {
+    font-family: "Montserrat-Medium";
+    font-size: 35px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    text-align: left;
+    color: #002067;
+  }
+  
+  .title-light {
+    font-family: "Montserrat-Medium";
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.05;
+    text-align: left;
+    color: #002067;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: -1.3px;
+  }
+  
+  .text-span {
+    font-family: "Montserrat-Medium";
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6c707b;
+  }
+  
+  .btn-onpax-primary {
+    border-radius: 4px;
+    border: solid 1px #002067;
+    background-color: #002067;
+    color: #fff;
+  }
+  
+  .btn-onpax-primary:hover {
+    color: #008385;
+    text-decoration: none;
+  }
+  
+  .btn-onpax-secundary {
+    border-radius: 4px;
+    border: solid 1px #29afa3;
+    background-color: #29afa3;
+    color: #fff;
+  }
+  
+  .text-modal-title {
+    font-family: "Montserrat-Medium";
+    font-size: 19px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6c707b;
+  }
+  
+  
+  @media (max-width : 2040px) {
+    .margin-right-login {
+      margin-right: 50px;
+    }
+  }
+  
+  @media (max-width : 1000px) {
+    body {
+      // background: url("../../assets/images/background.jpg");
+      background: image-url("bg_responsive.jpg") no-repeat left top;
+      background-size: cover;
+    }
+  }
+  
+  @media (max-width : 720px) {
+    .margin-right-login {
+      margin-right: 0px !important;
+    }
+  }
+  
+  /* Breakpoint max-width 599px */
+  @media (max-width: 599px) {
+    .title-bold {
+      font-size: 20px;
+    }
+  
+    .title-light {
+      color: #002067;
+      font-size: 20px;
+    }
+    .padding-braking{
+      padding: 0px !important;
+    }
+  }
+  
+  
+    // 540px
+  
+    // 720px
+  
+    // 960px
+  
+  

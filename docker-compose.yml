@@ -10,7 +10,7 @@ services:
       - app
       - app2
     ports:
-    - 80:80
+    - 81:81
   db:
     image: postgres
     restart: always

@@ -5,5 +5,5 @@ WORKDIR $RAILS_ROOT
 RUN mkdir log
 COPY nginx/app.conf /tmp/docker_example.nginx
 RUN envsubst '$RAILS_ROOT' < /tmp/docker_example.nginx > /etc/nginx/conf.d/def
-EXPOSE 80
+EXPOSE 81
 CMD ["nginx", "-g", "daemon off;"]
