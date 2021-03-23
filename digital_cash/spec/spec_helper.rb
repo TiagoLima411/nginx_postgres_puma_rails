@@ -28,7 +28,7 @@ RSpec.configure do |config|
     config.ignore_localhost = true
     config.filter_sensitive_data('<you_app_id>') { Rails.application.credentials[Rails.env.to_sym][:app_id] }
     config.filter_sensitive_data('<you_app_key>') { Rails.application.credentials[Rails.env.to_sym][:app_key] }
-    config.filter_sensitive_data('<you_token>') { Rails.application.credentials[Rails.env.to_sym][:pag_seguro_test_token] }
+    config.filter_sensitive_data('<you_token>') { Rails.application.credentials[Rails.env.to_sym][:pagseguro_token] }
     config.filter_sensitive_data('<you_email>') { Rails.application.credentials[Rails.env.to_sym][:email] }
   end
 

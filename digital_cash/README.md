@@ -48,7 +48,7 @@ To set environment variables, use the command below:
 ### Environment variables used so far.  
 devise_key: <you_devise_key>  
 email: <you_email_pagseguro>  
-pag_seguro_test_token: <you_pagseguro_token>  
+pagseguro_token: <you_pagseguro_token>  
 app_id: <you_pagseguro_app_id_>  
 app_key: <you_pagseguro_app_key>  
 

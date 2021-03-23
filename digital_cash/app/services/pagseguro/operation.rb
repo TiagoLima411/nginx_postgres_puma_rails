@@ -1,10 +1,10 @@
 module Pagseguro
   class Operation
 
-    APP_ID  = "abcd" #Rails.application.credentials[Rails.env.to_sym][:app_id]
-    APP_KEY = "abcd" #Rails.application.credentials[Rails.env.to_sym][:app_key]
-    TOKEN   = "abcd" #Rails.application.credentials[Rails.env.to_sym][:pag_seguro_test_token]
-    EMAIL   = "abcd" #Rails.application.credentials[Rails.env.to_sym][:email]
+    APP_ID  = Rails.application.credentials[Rails.env.to_sym][:app_id]
+    APP_KEY = Rails.application.credentials[Rails.env.to_sym][:app_key]
+    TOKEN   = Rails.application.credentials[Rails.env.to_sym][:pagseguro_token]
+    EMAIL   = Rails.application.credentials[Rails.env.to_sym][:email]
     BASE_WS = 'https://ws.sandbox.pagseguro.uol.com.br'.freeze
     BASE_HELPERS = 'https://df.uol.com.br'.freeze
 

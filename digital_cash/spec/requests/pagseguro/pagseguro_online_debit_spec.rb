@@ -6,7 +6,7 @@ RSpec.describe 'Pagseguro API', type: :request do
       @url_base         = 'https://sandbox.pagseguro.uol.com.br'
       @url_base_ws      = 'https://ws.sandbox.pagseguro.uol.com.br'
       @url_base_helpers = 'https://df.uol.com.br'
-      @token            = Rails.application.credentials[Rails.env.to_sym][:pag_seguro_test_token]
+      @token            = Rails.application.credentials[Rails.env.to_sym][:pagseguro_token]
       @email            = Rails.application.credentials[Rails.env.to_sym][:email]
 
       @session          = create_session
