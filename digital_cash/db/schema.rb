@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_172616) do
   create_table "cities", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "state_id"
-    t.boolean "capitol"
+    t.boolean "capital"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state_id"], name: "index_cities_on_state_id"
