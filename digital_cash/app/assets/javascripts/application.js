@@ -38,6 +38,7 @@
 //= require cep
 //= require toastr
 //= require_tree .
+//= require flipclock.min
 
 (function(window, document) {
 
