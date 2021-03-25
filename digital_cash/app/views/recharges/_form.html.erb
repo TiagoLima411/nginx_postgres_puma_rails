@@ -1,5 +1,8 @@
 <%= form_with url: "/send_card_transaction", method: :post do |f| %>
 
+  <%= f.hidden_field :s_hash, id: 's_hash', value: '' %>
+  <%= f.hidden_field :session_id, value: @session_id %>
+
   <fieldset>
     <div class="row">
       <div class="col-12">
@@ -65,5 +68,27 @@
   </fieldset>
 <% end %>
 
-<script>
+<script type="text/javascript">
+
+  PagSeguroDirectPayment.setSessionId('<%= @session_id %>');
+  PagSeguroDirectPayment.getPaymentMethods({
+    amount: 1.00,
+    success: function(response) {
+        console.log(response)
+    },
+    error: function(response) {
+      console.log(response)
+    },
+    complete: function(response) {
+      // Callback para todas chamadas.
+    }
+  });
+  PagSeguroDirectPayment.onSenderHashReady(function(response){
+    if(response.status != 'success') {
+      console.log(response.message);
+      return false;
+    }
+    $('#s_hash').val(response.senderHash)
+  });
+
 </script>

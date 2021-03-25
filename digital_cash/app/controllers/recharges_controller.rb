@@ -2,7 +2,7 @@ class RechargesController < ApplicationController
   before_action :set_recharge, only: %i[send_card_transaction]
 
   def send_card_transaction
-  	response = Pagseguro::Operation.send_card_transaction(@card_info, current_user)
+  	response = Pagseguro::Operation.send_card_transaction(@card_info, current_user, @session_id, @sender_hash)
   	respond_to do |format|
   	  if response.instance_of? Recharge
   	  	flash[:success] = 'Recarga criada com sucesso.'
@@ -13,15 +13,18 @@ class RechargesController < ApplicationController
   	  end
   	end
   end
-	
+
   def new
+    @session_id = Pagseguro::Operation.session
     @recharge = Recharge.new
   end
 
   private
 
   def set_recharge
-    value = params[:amount].gsub(',','.')
+    value = params[:amount].gsub(',', '.')
+    @session_id = params[:session_id]
+    @sender_hash = params[:s_hash]
     @card_info = {
       'amount': value,
       'cardNumber': params[:card_number],

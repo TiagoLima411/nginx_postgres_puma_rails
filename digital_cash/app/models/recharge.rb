@@ -40,11 +40,11 @@ class Recharge < ApplicationRecord
 		recharge.item_count = transaction['itemCount'].to_i
 		recharge.code = transaction['code']
 		recharge.payment_method_code = transaction['paymentMethod']['code']
-		recharge.authorizationCode = transaction['gatewaySystem']['authorizationCode']
-		recharge.nsu = transaction['gatewaySystem']['nsu']
-		recharge.tid = transaction['gatewaySystem']['tid']
-		recharge.establishment_code = transaction['gatewaySystem']['establishmentCode']
-		recharge.acquirer_Name = transaction['gatewaySystem']['acquirerName']
+		#recharge.authorizationCode = transaction['gatewaySystem']['authorizationCode']
+		#recharge.nsu = transaction['gatewaySystem']['nsu']
+		#recharge.tid = transaction['gatewaySystem']['tid']
+		#recharge.establishment_code = transaction['gatewaySystem']['establishmentCode']
+		#recharge.acquirer_Name = transaction['gatewaySystem']['acquirerName']
 		recharge.primary_receiver_key = transaction['primaryReceiver']['publicKey']
 		recharge.date = transaction['date'].to_time
 		recharge.transaction_date = transaction['date'].to_time
