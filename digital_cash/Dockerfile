@@ -1,5 +1,5 @@
 FROM ruby:2.6
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client vim
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client vim nano
 RUN mkdir /digital_cash
 WORKDIR /digital_cash
 COPY Gemfile /digital_cash/Gemfile

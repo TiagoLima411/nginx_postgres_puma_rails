@@ -8,7 +8,6 @@ services:
       dockerfile: ./nginx/Dockerfile
     depends_on:
       - app
-      - app2
     ports:
     - 81:81
   db:
@@ -32,15 +31,15 @@ services:
     tty: true
     depends_on:
       - db
-  app2:
-    build: ./rails_app
-    volumes:
-      - ./rails_app:/rails_app
-    environment:
-      - RAILS_ENV=${RAILS_ENV}
-    ports:
-      - "4200:4200"
-    stdin_open: true
-    tty: true
-    depends_on:
-      - db
+  #app2:
+  #  build: ./rails_app
+  #  volumes:
+  #    - ./rails_app:/rails_app
+  #  environment:
+  #    - RAILS_ENV=${RAILS_ENV}
+  #  ports:
+  #    - "4200:4200"
+  #  stdin_open: true
+  #  tty: true
+  #  depends_on:
+  #    - db
