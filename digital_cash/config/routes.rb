@@ -47,7 +47,8 @@ Rails.application.routes.draw do
 
   # Recharges
   #resources :recharges, only: [:new, :create]
-  #post '/send_card_transaction', to: 'recharges#send_card_transaction'
+  #post '/recharges/send_card_transaction', to: 'recharges#send_card_transaction'
+  get '/recharges/notify', to: 'recharges#notify'
 
   # SessionPayments (Middlewares)
   get '/outgoing_payment_password', to: 'session_payments#middleware_outgoing_payment_password'

@@ -1,4 +1,5 @@
 class RechargesController < ApplicationController
+  before_action :authenticate_user!, except: %i[notify]
   before_action :set_recharge, only: %i[send_card_transaction]
 
   def send_card_transaction
@@ -17,6 +18,10 @@ class RechargesController < ApplicationController
   def new
     @session_id = Pagseguro::Operation.session
     @recharge = Recharge.new
+  end
+
+  def notify
+    render json: {msg: "OK"}
   end
 
   private

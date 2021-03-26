@@ -118,7 +118,7 @@ module Pagseguro
         'billingAddress.state': user&.member&.state&.uf,
         'billingAddress.country': 'BRA',
 
-        'notificationURL': 'http://localhost:3000/pagseguro/notify'
+        'notificationURL': 'http://143.198.235.125:3000/recharges/notify'
       }
     end
   end
